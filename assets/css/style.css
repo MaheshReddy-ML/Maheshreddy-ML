@@ -1117,15 +1117,30 @@ body.menu-open .menu-toggle span:nth-child(3) {
   }
 
   .hero-stack {
-    height: 450px;
+    height: auto;
+    max-width: none;
+    display: grid;
+    gap: 12px;
   }
 
-  .layer-mid {
-    left: 22px;
+  .hero-stack .layer-card {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    animation: none;
+    transform: none;
   }
 
+  .metric-row {
+    flex-wrap: wrap;
+  }
+
+  .layer-main,
+  .layer-mid,
   .layer-back {
-    left: 44px;
+    left: auto;
+    top: auto;
   }
 
   .project-grid,
@@ -1155,29 +1170,21 @@ body.menu-open .menu-toggle span:nth-child(3) {
     padding: 62px 0;
   }
 
+  .hero {
+    padding-top: 24px;
+  }
+
   .hero-copy h1,
   .page-hero-shell h1 {
     font-size: clamp(1.85rem, 8.5vw, 2.8rem);
   }
 
-  .hero-stack {
-    height: 420px;
+  .hero-actions .btn {
+    width: 100%;
   }
 
   .layer-card {
     padding: 18px;
-  }
-
-  .layer-main {
-    top: 0;
-  }
-
-  .layer-mid {
-    top: 164px;
-  }
-
-  .layer-back {
-    top: 300px;
   }
 
   .stats-grid {
