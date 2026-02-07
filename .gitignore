@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+
+# Build folders (if you ever add them later)
+dist/
+build/
