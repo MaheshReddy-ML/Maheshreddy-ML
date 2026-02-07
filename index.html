@@ -50,7 +50,10 @@
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .glass-panel:hover {
@@ -84,7 +87,7 @@
         }
         
         .nav-link {
-            transition: all 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
         
         .nav-link:hover {
@@ -172,7 +175,8 @@
             height: 100%;
             object-fit: cover;
             filter: grayscale(40%) contrast(1.1);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .profile-image-container:hover img {
@@ -218,6 +222,30 @@
             .project-card:hover::before {
                 animation: none !important;
             }
+        }
+
+        body.perf-lite nav {
+            backdrop-filter: none !important;
+            background: rgba(0, 0, 0, 0.78) !important;
+        }
+
+        body.perf-lite .glass-panel {
+            backdrop-filter: none;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        body.perf-lite .text-glow,
+        body.perf-lite .profile-frame {
+            animation: none !important;
+        }
+
+        body.perf-lite .profile-frame::before {
+            filter: blur(10px);
+            opacity: 0.3;
+        }
+
+        body.perf-lite .profile-image-container img {
+            filter: grayscale(15%) contrast(1.03);
         }
     </style>
 </head>
@@ -577,6 +605,13 @@
 
         // --- NEURAL CANVAS LOGIC ---
         const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
+        const isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+        const lowCpuDevice = typeof navigator !== 'undefined' && navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+        const liteMode = prefersReducedMotion || isMobileViewport || isCoarsePointer || lowCpuDevice;
+        const hasCanvasGlow = !liteMode;
+        const maxFps = liteMode ? 30 : 45;
+        const frameInterval = 1000 / maxFps;
         const canvas = document.getElementById('neural-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -587,10 +622,19 @@
             ty: window.innerHeight / 2
         };
         let lastFrameTime = 0;
+        let animationFrameId = null;
+        let isAnimating = false;
+        let latestMouseX = mouse.tx;
+        let latestMouseY = mouse.ty;
+        let mouseRafQueued = false;
+        let resizeDebounceId;
 
         function getParticleCount() {
             const viewportArea = window.innerWidth * window.innerHeight;
-            return Math.max(70, Math.min(170, Math.floor(viewportArea / 9000)));
+            if (liteMode) {
+                return Math.max(30, Math.min(80, Math.floor(viewportArea / 18000)));
+            }
+            return Math.max(55, Math.min(130, Math.floor(viewportArea / 12000)));
         }
 
         function initCanvas() {
@@ -622,7 +666,8 @@
             const pointerX = mouse.x || canvas.width / 2;
             const pointerY = mouse.y || canvas.height / 2;
 
-            const aura = ctx.createRadialGradient(pointerX, pointerY, 0, pointerX, pointerY, 220);
+            const auraRadius = liteMode ? 160 : 220;
+            const aura = ctx.createRadialGradient(pointerX, pointerY, 0, pointerX, pointerY, auraRadius);
             aura.addColorStop(0, "rgba(99, 102, 241, 0.10)");
             aura.addColorStop(1, "rgba(99, 102, 241, 0)");
             ctx.fillStyle = aura;
@@ -634,8 +679,12 @@
             const ty = pointerY ? (pointerY - canvas.height / 2) / 48 : 0;
             ctx.translate(tx, ty);
 
-            const linkDistance = Math.max(130, Math.min(200, window.innerWidth * 0.12));
-            const mouseLinkDistance = linkDistance + 70;
+            const linkDistance = liteMode
+                ? Math.max(90, Math.min(130, window.innerWidth * 0.09))
+                : Math.max(120, Math.min(185, window.innerWidth * 0.11));
+            const linkDistanceSq = linkDistance * linkDistance;
+            const mouseLinkDistance = linkDistance + (liteMode ? 35 : 65);
+            const mouseLinkDistanceSq = mouseLinkDistance * mouseLinkDistance;
 
             particles.forEach((p, i) => {
                 if (!prefersReducedMotion) {
@@ -652,55 +701,78 @@
                     const p2 = particles[j];
                     const dx = p.x - p2.x;
                     const dy = p.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const distSq = dx * dx + dy * dy;
 
-                    if (dist < linkDistance) {
+                    if (distSq < linkDistanceSq) {
+                        const dist = Math.sqrt(distSq);
                         ctx.beginPath();
                         ctx.lineWidth = 0.9;
                         ctx.strokeStyle = `rgba(99, 102, 241, ${0.22 * (1 - dist / linkDistance)})`;
-                        ctx.shadowBlur = 12;
-                        ctx.shadowColor = 'rgba(99,102,241,0.18)';
+                        if (hasCanvasGlow) {
+                            ctx.shadowBlur = 8;
+                            ctx.shadowColor = 'rgba(99,102,241,0.14)';
+                        }
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
                         ctx.stroke();
-                        ctx.shadowBlur = 0;
+                        if (hasCanvasGlow) ctx.shadowBlur = 0;
                     }
                 }
 
-                if (pointerX) {
+                if (!liteMode && Number.isFinite(pointerX)) {
                     const dx = p.x - pointerX;
                     const dy = p.y - pointerY;
-                    const mDist = Math.sqrt(dx * dx + dy * dy);
-                    if (mDist < mouseLinkDistance) {
+                    const mDistSq = dx * dx + dy * dy;
+                    if (mDistSq < mouseLinkDistanceSq) {
+                        const mDist = Math.sqrt(mDistSq);
                         ctx.beginPath();
                         ctx.strokeStyle = `rgba(129, 140, 248, ${0.12 * (1 - mDist / mouseLinkDistance)})`;
                         ctx.lineWidth = 0.8;
-                        ctx.shadowBlur = 10;
-                        ctx.shadowColor = 'rgba(129,140,248,0.12)';
+                        if (hasCanvasGlow) {
+                            ctx.shadowBlur = 7;
+                            ctx.shadowColor = 'rgba(129,140,248,0.1)';
+                        }
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(pointerX, pointerY);
                         ctx.stroke();
-                        ctx.shadowBlur = 0;
+                        if (hasCanvasGlow) ctx.shadowBlur = 0;
                     }
                 }
 
                 ctx.fillStyle = "rgba(99, 102, 241, 0.7)";
                 ctx.beginPath();
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = 'rgba(99,102,241,0.18)';
+                if (hasCanvasGlow) {
+                    ctx.shadowBlur = 6;
+                    ctx.shadowColor = 'rgba(99,102,241,0.14)';
+                }
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.shadowBlur = 0;
+                if (hasCanvasGlow) ctx.shadowBlur = 0;
             });
 
             ctx.restore();
         }
 
         function animate(timestamp = 0) {
+            if (!isAnimating) return;
+            animationFrameId = requestAnimationFrame(animate);
+            if (lastFrameTime && timestamp - lastFrameTime < frameInterval) return;
             const delta = lastFrameTime ? Math.min((timestamp - lastFrameTime) / 16.67, 2) : 1;
             lastFrameTime = timestamp;
             renderNeuralFrame(delta);
-            requestAnimationFrame(animate);
+        }
+
+        function startAnimation() {
+            if (isAnimating) return;
+            isAnimating = true;
+            lastFrameTime = 0;
+            animationFrameId = requestAnimationFrame(animate);
+        }
+
+        function stopAnimation() {
+            isAnimating = false;
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
         }
 
         // --- RENDER FUNCTIONS ---
@@ -762,7 +834,7 @@
         }
 
         function setupGsapAnimations() {
-            if (prefersReducedMotion) return;
+            if (prefersReducedMotion || liteMode) return;
 
             gsap.registerPlugin(ScrollTrigger);
 
@@ -881,6 +953,7 @@
 
         // --- INITIALIZE ---
         window.addEventListener('load', () => {
+            if (liteMode) document.body.classList.add('perf-lite');
             initCanvas(); 
             renderProjects();
             renderSkills();
@@ -889,10 +962,10 @@
             animateStats();
             setupGsapAnimations();
 
-            if (prefersReducedMotion) {
+            if (prefersReducedMotion || liteMode) {
                 renderNeuralFrame(0);
             } else {
-                animate();
+                startAnimation();
             }
 
             // entrance animation for remaining terminal(s)
@@ -904,23 +977,41 @@
         });
 
         window.addEventListener('resize', () => {
-            initCanvas();
-            if (prefersReducedMotion) renderNeuralFrame(0);
+            clearTimeout(resizeDebounceId);
+            resizeDebounceId = setTimeout(() => {
+                initCanvas();
+                if (prefersReducedMotion || liteMode) renderNeuralFrame(0);
+            }, 150);
         });
 
-        window.addEventListener('mousemove', (e) => { 
-            mouse.tx = e.clientX;
-            mouse.ty = e.clientY;
+        window.addEventListener('mousemove', (e) => {
+            latestMouseX = e.clientX;
+            latestMouseY = e.clientY;
+            if (mouseRafQueued) return;
+            mouseRafQueued = true;
+            requestAnimationFrame(() => {
+                mouseRafQueued = false;
+                mouse.tx = latestMouseX;
+                mouse.ty = latestMouseY;
+                if (prefersReducedMotion || liteMode) {
+                    mouse.x = latestMouseX;
+                    mouse.y = latestMouseY;
+                    renderNeuralFrame(0);
+                }
+            });
+        }, { passive: true });
 
-            if (prefersReducedMotion) {
-                mouse.x = e.clientX;
-                mouse.y = e.clientY;
-                renderNeuralFrame(0);
-            }
-        });
         window.addEventListener('mouseleave', () => {
             mouse.tx = window.innerWidth / 2;
             mouse.ty = window.innerHeight / 2;
+        }, { passive: true });
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopAnimation();
+            } else if (!prefersReducedMotion && !liteMode) {
+                startAnimation();
+            }
         });
         
     </script>
