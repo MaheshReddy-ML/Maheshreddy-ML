@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Mahesh Reddy</title>
+    <meta
+      name="description"
+      content="Reach Mahesh Reddy for AI/ML collaborations, research discussions, internships, and engineering opportunities."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body data-page="contact">
+    <div class="site-bg">
+      <canvas id="particleCanvas" aria-hidden="true"></canvas>
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+      <span class="orb orb-c"></span>
+    </div>
+
+    <header class="site-header" id="top">
+      <div class="container nav-shell">
+        <a href="../index.html" class="brand">
+          <span class="brand-mark">MR</span>
+          <span class="brand-text">Mahesh Reddy</span>
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="../index.html#about">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="research.html">Research</a>
+          <a href="contact.html" aria-current="page" class="nav-cta magnetic">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-shell page-hero">
+        <div class="container page-hero-shell reveal" data-reveal="up">
+          <p class="eyebrow">Get in Touch</p>
+          <h1>Open to AI/ML collaborations and research conversations</h1>
+          <p>
+            Reach out for internships, project collaborations, research partnerships, or technical AI
+            discussions. I usually respond within 24 hours.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="container contact-grid">
+          <aside class="contact-panel reveal" data-reveal="left">
+            <h2>Availability</h2>
+            <p>
+              Currently available for remote internships, project collaborations, and research-driven AI/ML
+              engineering opportunities.
+            </p>
+
+            <div class="timezone-list">
+              <div>
+                <span>Vadodara</span>
+                <strong data-timezone="Asia/Kolkata">--:--</strong>
+              </div>
+              <div>
+                <span>London</span>
+                <strong data-timezone="Europe/London">--:--</strong>
+              </div>
+              <div>
+                <span>New York</span>
+                <strong data-timezone="America/New_York">--:--</strong>
+              </div>
+              <div>
+                <span>San Francisco</span>
+                <strong data-timezone="America/Los_Angeles">--:--</strong>
+              </div>
+            </div>
+
+            <div class="contact-links">
+              <a href="mailto:hemu171807@gmail.com">hemu171807@gmail.com</a>
+              <a href="tel:+919177319640">+91 91773 19640</a>
+              <a href="https://www.linkedin.com/in/maheshreddy04" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="https://github.com/MaheshReddy-ML" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </aside>
+
+          <div class="form-panel reveal" data-reveal="up">
+            <form id="contactForm" class="contact-form" novalidate>
+              <label>
+                Name
+                <input type="text" name="name" placeholder="Your full name" required />
+              </label>
+
+              <label>
+                Email
+                <input type="email" name="email" placeholder="you@company.com" required />
+              </label>
+
+              <label>
+                Inquiry Type
+                <select name="focus" required>
+                  <option value="">Choose one</option>
+                  <option value="research collaboration">Research Collaboration</option>
+                  <option value="internship opportunity">Internship Opportunity</option>
+                  <option value="project collaboration">Project Collaboration</option>
+                  <option value="hiring discussion">Hiring Discussion</option>
+                </select>
+              </label>
+
+              <label>
+                Message
+                <textarea
+                  name="brief"
+                  rows="6"
+                  placeholder="Share your message, role, timeline, or problem statement..."
+                  required
+                ></textarea>
+              </label>
+
+              <button type="submit" class="btn btn-primary magnetic">Send Message</button>
+              <p class="form-message" id="formMessage" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>&copy; <span id="year"></span> Mahesh Reddy. Research-led engineering.</p>
+        <div>
+          <a href="projects.html">Projects</a>
+          <a href="research.html">Research</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/contact.js"></script>
+  </body>
+</html>

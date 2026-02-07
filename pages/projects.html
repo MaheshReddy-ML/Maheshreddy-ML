@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Layers | Mahesh Reddy</title>
+    <meta
+      name="description"
+      content="Deep-dive into Mahesh Reddy's AI/ML projects including myMLlib, Email Spam Classifier, Breast Cancer Detection, and Rent Predictor."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body data-page="projects">
+    <div class="site-bg">
+      <canvas id="particleCanvas" aria-hidden="true"></canvas>
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+      <span class="orb orb-c"></span>
+    </div>
+
+    <header class="site-header" id="top">
+      <div class="container nav-shell">
+        <a href="../index.html" class="brand">
+          <span class="brand-mark">MR</span>
+          <span class="brand-text">Mahesh Reddy</span>
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="../index.html#about">About</a>
+          <a href="projects.html" aria-current="page">Projects</a>
+          <a href="research.html">Research</a>
+          <a href="contact.html" class="nav-cta magnetic">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-shell page-hero">
+        <div class="container page-hero-shell reveal" data-reveal="up">
+          <p class="eyebrow">Engineering Layers</p>
+          <h1>Project artifacts built through math-first ML engineering</h1>
+          <p>
+            Filter by project type and open each layer for implementation focus, outcomes, and repository links.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="container">
+          <div class="filter-row reveal" data-reveal="up">
+            <button class="filter-chip active" data-filter="all">All Layers</button>
+            <button class="filter-chip" data-filter="scratch">From Scratch</button>
+            <button class="filter-chip" data-filter="deep">Deep Learning</button>
+            <button class="filter-chip" data-filter="nlp">NLP</button>
+            <button class="filter-chip" data-filter="predictive">Predictive</button>
+          </div>
+
+          <div class="project-layer-grid" id="projectLayers">
+            <article
+              id="mymllib"
+              class="project-layer-card tilt reveal"
+              data-category="scratch predictive"
+              data-reveal="up"
+            >
+              <div class="layer-header">
+                <p class="pill">Library Development</p>
+                <span>Layer 01</span>
+              </div>
+              <h3>myMLlib</h3>
+              <p>
+                A comprehensive custom ML library implementing core algorithms from scratch for first-principles
+                understanding and reproducible experimentation.
+              </p>
+              <ul>
+                <li>Custom algorithm implementations</li>
+                <li>Designed for conceptual clarity + hands-on testing</li>
+                <li>Built and maintained as a personal research utility</li>
+              </ul>
+              <a href="https://github.com/MaheshReddy-ML/myMLlib" target="_blank" rel="noreferrer"
+                >View Repository</a
+              >
+            </article>
+
+            <article
+              id="spam"
+              class="project-layer-card tilt reveal"
+              data-category="deep nlp"
+              data-reveal="up"
+              data-delay="80"
+            >
+              <div class="layer-header">
+                <p class="pill">NLP System</p>
+                <span>Layer 02</span>
+              </div>
+              <h3>Email Spam Classifier</h3>
+              <p>
+                Deep learning spam detection system using TensorFlow with TF-IDF vectorization, delivering
+                99% observed accuracy.
+              </p>
+              <ul>
+                <li>99% model accuracy</li>
+                <li>Text preprocessing + vectorization pipeline</li>
+                <li>Production-style classification workflow</li>
+              </ul>
+              <a href="https://github.com/MaheshReddy-ML/EmailFilterAI" target="_blank" rel="noreferrer"
+                >View Repository</a
+              >
+            </article>
+
+            <article
+              id="cancer"
+              class="project-layer-card tilt reveal"
+              data-category="scratch deep"
+              data-reveal="up"
+              data-delay="140"
+            >
+              <div class="layer-header">
+                <p class="pill">Medical AI</p>
+                <span>Layer 03</span>
+              </div>
+              <h3>Breast Cancer Detection</h3>
+              <p>
+                Logistic Regression built from scratch with NumPy for diagnostic inference on Kaggle datasets,
+                achieving 92% observed accuracy.
+              </p>
+              <ul>
+                <li>92% observed accuracy</li>
+                <li>No high-level ML frameworks in training logic</li>
+                <li>Gradient-based optimization from raw implementation</li>
+              </ul>
+              <a
+                href="https://github.com/MaheshReddy-ML/Breast-Cancer-Detection"
+                target="_blank"
+                rel="noreferrer"
+                >View Repository</a
+              >
+            </article>
+
+            <article class="project-layer-card tilt reveal" data-category="scratch predictive" data-reveal="up" data-delay="200">
+              <div class="layer-header">
+                <p class="pill">Math-Only Modeling</p>
+                <span>Layer 04</span>
+              </div>
+              <h3>Hyderabad House Rent Predictor</h3>
+              <p>
+                Predictive model for Hyderabad rental pricing built without scikit-learn to focus on direct
+                mathematical formulation and interpretation.
+              </p>
+              <ul>
+                <li>Feature engineering from raw rental signals</li>
+                <li>Model behavior evaluated through manual diagnostics</li>
+                <li>First-principles predictive pipeline</li>
+              </ul>
+              <a
+                href="https://github.com/MaheshReddy-ML/Hyderabad_House_Rent_Predictor"
+                target="_blank"
+                rel="noreferrer"
+                >View Repository</a
+              >
+            </article>
+
+            <article class="project-layer-card tilt reveal" data-category="nlp deep" data-reveal="up" data-delay="260">
+              <div class="layer-header">
+                <p class="pill">Research Build</p>
+                <span>Layer 05</span>
+              </div>
+              <h3>AI Companion Framework</h3>
+              <p>
+                Research direction on empathetic large language model systems and architectural requirements
+                for emotionally aware AI companions.
+              </p>
+              <ul>
+                <li>NLP + HCI research framing</li>
+                <li>Transformer-based conceptual architecture</li>
+                <li>Paper archive available in research section</li>
+              </ul>
+              <a href="research.html">Open Research Page</a>
+            </article>
+
+            <article class="project-layer-card tilt reveal" data-category="predictive" data-reveal="up" data-delay="320">
+              <div class="layer-header">
+                <p class="pill">Learning Workflow</p>
+                <span>Layer 06</span>
+              </div>
+              <h3>Technical Blogging Engine</h3>
+              <p>
+                Ongoing technical documentation under "Through My Eyes AI/ML" to publish project learnings,
+                model breakdowns, and implementation notes.
+              </p>
+              <ul>
+                <li>Consistency in public technical writing</li>
+                <li>Project retrospectives with architecture insights</li>
+                <li>Used as reinforcement for deep technical clarity</li>
+              </ul>
+              <a href="contact.html">Request selected writeups</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="container">
+          <div class="deep-dive reveal" data-reveal="up">
+            <p class="eyebrow">Build Method</p>
+            <h2>How each project is designed and shipped</h2>
+            <div class="deep-dive-grid">
+              <article>
+                <h3>Problem Mapping</h3>
+                <p>Define objective, evaluate dataset limits, and frame measurable outputs.</p>
+              </article>
+              <article>
+                <h3>Math Core</h3>
+                <p>Implement critical parts from scratch to understand model behavior deeply.</p>
+              </article>
+              <article>
+                <h3>System Build</h3>
+                <p>Wrap models into reusable modules, evaluate, and validate on real data.</p>
+              </article>
+              <article>
+                <h3>Communication</h3>
+                <p>Publish findings in papers/blogs for reproducibility and peer visibility.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>&copy; <span id="year"></span> Mahesh Reddy. Research-led engineering.</p>
+        <div>
+          <a href="research.html">Research</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/projects.js"></script>
+  </body>
+</html>

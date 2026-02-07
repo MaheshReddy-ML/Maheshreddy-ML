@@ -1,1019 +1,285 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mahesh Reddy | AI Engineer</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- GSAP for advanced animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <style>
-        :root {
-            --accent: #6366f1;
-            --accent-rgb: 99, 102, 241;
-            --neural-glow: rgba(99, 102, 241, 0.5);
-        }
+    <meta
+      name="description"
+      content="Mahesh Reddy AI/ML portfolio featuring scratch-built machine learning systems, applied research papers, and production-ready engineering projects."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body data-page="home">
+    <div class="site-bg">
+      <canvas id="particleCanvas" aria-hidden="true"></canvas>
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+      <span class="orb orb-c"></span>
+    </div>
 
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: #030008;
-            color: #ffffff;
-            cursor: crosshair;
-            overflow-x: hidden;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #030008;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #312e81;
-            border-radius: 10px;
-        }
-
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                        background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-panel:hover {
-            border-color: rgba(99, 102, 241, 0.3);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        #neural-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.8; 
-        }
-
-        .text-glow {
-            text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
-            animation: glowPulse 5.5s ease-in-out infinite;
-        }
-
-        .terminal-glow {
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(99, 102, 241, 0.05);
-        }
-
-        section {
-            position: relative;
-            z-index: 10;
-        }
-        
-        .nav-link {
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: #818cf8;
-            text-shadow: 0 0 10px rgba(129, 140, 248, 0.5);
-        }
-
-        @keyframes messageIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .message-anim {
-            animation: messageIn 0.3s ease-out forwards;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #6366f1 !important;
-            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
-        }
-        
-        .status-dot {
-            box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
-        }
-
-        .project-card { transition: transform 0.45s ease, box-shadow 0.45s ease; }
-        .project-card {
-            position: relative;
-            isolation: isolate;
-        }
-        .project-card::before {
-            content: "";
-            position: absolute;
-            inset: -20% 60% -20% -60%;
-            background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.15) 50%, transparent 70%);
-            transform: translateX(-110%) skewX(-20deg);
-            opacity: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .project-card:hover { transform: translateY(-8px) rotateZ(-0.3deg); box-shadow: 0 18px 50px rgba(99,102,241,0.12); }
-        .project-card:hover::before {
-            opacity: 1;
-            animation: cardSweep 0.9s ease forwards;
-        }
-
-        .skill-item { transition: transform 0.36s ease, background 0.36s ease; }
-        .skill-item:hover { transform: translateX(6px); background: linear-gradient(90deg, rgba(99,102,241,0.06), rgba(255,255,255,0.02)); }
-
-        /* Profile Image Frame */
-        .profile-frame {
-            position: relative;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.5), transparent, rgba(99, 102, 241, 0.2));
-            border-radius: 2rem;
-            z-index: 20;
-            animation: profileFloat 7s ease-in-out infinite;
-        }
-
-        .profile-frame::before {
-            content: "";
-            position: absolute;
-            inset: -12px;
-            border-radius: inherit;
-            background: radial-gradient(circle at 30% 20%, rgba(var(--accent-rgb), 0.35), transparent 65%);
-            filter: blur(18px);
-            opacity: 0.5;
-            z-index: -1;
-        }
-        
-        .profile-image-container {
-            border-radius: 1.9rem;
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-            width: 320px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #050505;
-        }
-
-        .profile-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(40%) contrast(1.1);
-            transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .profile-image-container:hover img {
-            filter: grayscale(0%) contrast(1);
-            transform: scale(1.03);
-        }
-
-        .img-fallback {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            color: #6366f1;
-        }
-        
-        /* Show fallback only if image fails */
-        img.error-hidden {
-            display: none;
-        }
-        img.error-hidden + .img-fallback {
-            display: flex;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { text-shadow: 0 0 14px rgba(var(--accent-rgb), 0.34); }
-            50% { text-shadow: 0 0 34px rgba(var(--accent-rgb), 0.7); }
-        }
-
-        @keyframes cardSweep {
-            from { transform: translateX(-110%) skewX(-20deg); }
-            to { transform: translateX(130%) skewX(-20deg); }
-        }
-
-        @keyframes profileFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .text-glow,
-            .profile-frame,
-            .project-card:hover::before {
-                animation: none !important;
-            }
-        }
-
-        body.perf-lite nav {
-            backdrop-filter: none !important;
-            background: rgba(0, 0, 0, 0.78) !important;
-        }
-
-        body.perf-lite .glass-panel {
-            backdrop-filter: none;
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        body.perf-lite .text-glow,
-        body.perf-lite .profile-frame {
-            animation: none !important;
-        }
-
-        body.perf-lite .profile-frame::before {
-            filter: blur(10px);
-            opacity: 0.3;
-        }
-
-        body.perf-lite .profile-image-container img {
-            filter: grayscale(15%) contrast(1.03);
-        }
-    </style>
-</head>
-<body class="custom-scrollbar">
-
-    <!-- THE NEURAL CANVAS -->
-    <canvas id="neural-canvas"></canvas>
-
-    <!-- HEADER -->
-    <nav class="fixed w-full top-0 z-50 px-6 py-4 backdrop-blur-md bg-black/40 border-b border-white/5">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="font-bold text-xl tracking-tighter text-white uppercase">
-                Mahesh<span class="text-indigo-400">.Reddy</span>
-            </div>
-            <div class="hidden md:flex gap-8 text-[10px] font-mono uppercase tracking-[0.3em] text-zinc-500">
-                <a href="#about" class="nav-link text-zinc-400 hover:text-indigo-400">[About]</a>
-                <a href="#research" class="nav-link text-zinc-400 hover:text-indigo-400">[Research]</a>
-                <a href="#projects" class="nav-link text-zinc-400 hover:text-indigo-400">[Projects]</a>
-                <a href="#experience" class="nav-link text-zinc-400 hover:text-indigo-400">[Experience]</a>
-                <a href="#inquiry" class="nav-link text-zinc-400 hover:text-indigo-400">[Inquiry]</a>
-            </div>
-        </div>
-    </nav>
+    <header class="site-header" id="top">
+      <div class="container nav-shell">
+        <a href="index.html" class="brand">
+          <span class="brand-mark">MR</span>
+          <span class="brand-text">Mahesh Reddy</span>
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="#about">About</a>
+          <a href="#expertise">Expertise</a>
+          <a href="pages/projects.html">Projects</a>
+          <a href="pages/research.html">Research</a>
+          <a href="pages/contact.html" class="nav-cta magnetic">Collaborate</a>
+        </nav>
+      </div>
+    </header>
 
     <main>
-        <!-- HERO SECTION -->
-        <section id="about" class="min-h-screen flex flex-col justify-center px-6 lg:px-24 py-32">
-            <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Content: Typography & Bio -->
-                <div class="lg:col-span-8 flex flex-col items-start order-2 lg:order-1">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[10px] font-bold tracking-widest mb-8">
-                        <i data-lucide="activity" class="w-3 h-3"></i> SYSTEM_STATUS: CORE_STABILITY_DETECTED
-                    </div>
-                    <h1 class="text-6xl lg:text-[8rem] font-black tracking-tighter leading-[0.9] mb-6 text-white uppercase">
-                        Mahesh <br /> <span class="text-indigo-500 text-glow">Reddy.</span>
-                    </h1>
-                    <p class="max-w-xl text-xl text-zinc-400 font-light leading-relaxed mb-12">
-                        I don't just use AI/ML libraries; <span class="text-white font-medium italic">I build them.</span> Pursuing deep understanding through scratch-built architectures and analytical research at Parul University.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#research" class="bg-indigo-600 px-8 py-4 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-indigo-500 transition-all flex items-center gap-2 text-white shadow-lg shadow-indigo-600/20">
-                            Research Laboratory <i data-lucide="microscope" class="w-4 h-4"></i>
-                        </a>
-                        <div class="flex items-center gap-6 px-4 text-zinc-500">
-                            <a href="https://github.com/MaheshReddy-ML" target="_blank"><i data-lucide="github" class="hover:text-white transition-colors cursor-pointer w-5 h-5"></i></a>
-                            <a href="https://www.linkedin.com/in/maheshreddy04" target="_blank"><i data-lucide="linkedin" class="hover:text-white transition-colors cursor-pointer w-5 h-5"></i></a>
-                            <a href="mailto:hemu171807@gmail.com"><i data-lucide="mail" class="hover:text-white transition-colors cursor-pointer w-5 h-5"></i></a>
-                        </div>
-                    </div>
-                </div>
+      <section class="hero section-shell">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal" data-reveal="up">
+            <p class="eyebrow">AI Engineer | ML Builder</p>
+            <h1>
+              I don&apos;t just use ML libraries
+              <span>I build them from first principles</span>
+            </h1>
+            <p class="hero-lead">
+              Pursuing deep understanding through scratch-built architectures and analytical research at
+              Parul University. I build practical AI systems across NLP, deep learning, and custom
+              mathematical implementations.
+            </p>
+            <div class="hero-actions">
+              <a href="pages/research.html" class="btn btn-primary magnetic">Research Archive</a>
+              <a href="pages/contact.html" class="btn btn-secondary">Start Collaboration</a>
+            </div>
+            <ul class="hero-tags">
+              <li>myMLlib</li>
+              <li>TensorFlow</li>
+              <li>NumPy from Scratch</li>
+              <li>Deep Learning</li>
+            </ul>
+            <div class="inline-links">
+              <a href="https://github.com/MaheshReddy-ML" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/maheshreddy04" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="mailto:hemu171807@gmail.com">Email</a>
+              <a href="tel:+919177319640">Phone</a>
+            </div>
+          </div>
 
-                <!-- Right Content: Formal Profile Image -->
-                <div class="lg:col-span-4 order-1 lg:order-2 flex justify-center lg:justify-end">
-                    <div class="profile-frame group">
-                        <div class="profile-image-container glass-panel">
-                            <!-- Image with local filename and error handling -->
-                            <img src="linked_profile.jpg" 
-                                 alt="Mahesh Reddy" 
-                                 onerror="this.classList.add('error-hidden');"
-                                 class="w-full h-full object-cover">
-                            
-                            <!-- Fallback UI if Image Fails to load -->
-                            <div class="img-fallback">
-                                <i data-lucide="user-cog" class="w-16 h-16 opacity-50"></i>
-                                <span class="text-xs font-mono uppercase tracking-widest opacity-50">Identity_Secured</span>
-                            </div>
-                        </div>
-                        <!-- UI Decoration -->
-                        <div class="absolute -bottom-4 -right-4 p-4 bg-indigo-600 rounded-2xl shadow-xl hidden lg:block group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500">
-                            <i data-lucide="cpu" class="text-white w-6 h-6"></i>
-                        </div>
-                    </div>
-                </div>
+          <div class="hero-stack reveal" data-reveal="right">
+            <article class="layer-card layer-main" data-parallax="0.2">
+              <p class="card-label">Live Artifact</p>
+              <h3>Email Spam Classifier</h3>
+              <div class="metric-row">
+                <span>
+                  <strong class="stat-value" data-target="99">0</strong>
+                  <small>% Accuracy</small>
+                </span>
+                <span>
+                  <strong class="stat-value" data-target="3">0</strong>
+                  <small>Pipeline Stages</small>
+                </span>
+              </div>
+              <p>TensorFlow-powered NLP classifier delivering top-tier spam filtering performance.</p>
+            </article>
 
-            </div>
-        </section>
+            <article class="layer-card layer-mid" data-parallax="0.35">
+              <p class="card-label">Research Artifact</p>
+              <h3>Breast Cancer Detection</h3>
+              <p>
+                Logistic Regression implemented from scratch using NumPy with observed diagnostic
+                accuracy of 92% on Kaggle datasets.
+              </p>
+            </article>
 
-        <!-- STATS STRIP -->
-        <div class="relative z-10 bg-white/[0.02] border-y border-white/5 py-12 px-6 lg:px-24 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
-            <div>
-                <div class="text-3xl font-bold text-indigo-400"><span class="stat-value" data-target="99">0</span>%</div>
-                <div class="text-[10px] text-zinc-500 uppercase font-mono tracking-widest">Spam Accuracy</div>
-            </div>
-            <div>
-                <div class="text-3xl font-bold text-indigo-400"><span class="stat-value" data-target="92">0</span>%</div>
-                <div class="text-[10px] text-zinc-500 uppercase font-mono tracking-widest">Cancer Detection</div>
-            </div>
-            <div>
-                <div class="text-3xl font-bold text-indigo-400">myMLlib</div>
-                <div class="text-[10px] text-zinc-500 uppercase font-mono tracking-widest">Custom Library</div>
-            </div>
-            <div>
-                <div class="text-3xl font-bold text-indigo-400">B.Tech</div>
-                <div class="text-[10px] text-zinc-500 uppercase font-mono tracking-widest">CS (AI) @ Parul</div>
-            </div>
+            <article class="layer-card layer-back" data-parallax="0.5">
+              <p class="card-label">Identity Layer</p>
+              <h3>Mahesh Reddy</h3>
+              <p>B.Tech CS (AI), Parul University (2023-2027)</p>
+              <img src="assets/media/linked_profile.jpg" alt="Mahesh Reddy" class="mini-profile" />
+            </article>
+          </div>
         </div>
+      </section>
 
-        <!-- RESEARCH SECTION -->
-        <section id="research" class="py-32 px-6 lg:px-24 bg-white/[0.01]">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-                <div>
-                    <h2 class="text-5xl font-black mb-4 uppercase text-white">Research Archive</h2>
-                    <p class="text-zinc-500 font-mono text-sm tracking-widest">FROM_FIRST_PRINCIPLES.PDF</p>
-                </div>
-                <div class="h-px flex-grow bg-white/5 mx-8 hidden md:block"></div>
-                <i data-lucide="book-open" class="text-indigo-500 hidden md:block w-10 h-10"></i>
+      <section class="section-shell" id="about">
+        <div class="container grid-two">
+          <div class="panel reveal" data-reveal="up">
+            <p class="eyebrow">About Me</p>
+            <h2>Research-led engineering with implementation depth</h2>
+            <p>
+              I focus on understanding the mathematical core of models and then productizing them with clean,
+              reproducible systems. Current academic track: B.Tech Computer Science (AI) at Parul University,
+              Vadodara.
+            </p>
+          </div>
+
+          <div class="stats-grid reveal" data-reveal="up" data-delay="120">
+            <div class="stat-card">
+              <p>Email Spam Accuracy</p>
+              <strong>99%</strong>
             </div>
-
-            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
-                <!-- Paper 1: AI Companion -->
-                <div class="group relative p-1 bg-gradient-to-br from-indigo-500/20 to-transparent rounded-3xl overflow-hidden hover:from-indigo-500/40 transition-all">
-                    <div class="bg-[#050505] p-10 rounded-[22px] h-full flex flex-col justify-between border border-white/5">
-                        <div>
-                            <div class="flex justify-between items-start mb-6">
-                                <span class="text-[10px] font-mono text-indigo-400 bg-indigo-400/10 px-2 py-1 rounded uppercase tracking-tighter">Paper_2025_Companion</span>
-                                <i data-lucide="brain-circuit" class="text-zinc-800 group-hover:text-indigo-500 transition-colors w-5 h-5"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4 group-hover:text-indigo-400 transition-colors text-white">AI Companion: Theoretical Frameworks</h3>
-                            <p class="text-zinc-500 text-sm leading-relaxed mb-8">
-                                Researching the intersection of emotional intelligence and large language models. This paper explores the architectural requirements for truly empathetic digital companions.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span class="text-[9px] font-mono text-zinc-400 border border-white/5 px-2 py-1 rounded-md">NLP</span>
-                                <span class="text-[9px] font-mono text-zinc-400 border border-white/5 px-2 py-1 rounded-md">HCI</span>
-                                <span class="text-[9px] font-mono text-zinc-400 border border-white/5 px-2 py-1 rounded-md">Transformers</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-end border-t border-white/5 pt-6">
-                            <div>
-                                <div class="text-[8px] uppercase text-zinc-600 mb-1 tracking-widest">Publication Status</div>
-                                <div class="text-xl font-bold font-mono text-white">ARCHIVED</div>
-                            </div>
-                            <a href="AI_Companion_Research_paper.pdf" target="_blank" class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-indigo-400 hover:text-white transition-colors">
-                                View Full Paper<i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Paper 2: Breast Cancer -->
-                <div class="group relative p-1 bg-gradient-to-br from-indigo-500/20 to-transparent rounded-3xl overflow-hidden hover:from-indigo-500/40 transition-all">
-                    <div class="bg-[#050505] p-10 rounded-[22px] h-full flex flex-col justify-between border border-white/5">
-                        <div>
-                            <div class="flex justify-between items-start mb-6">
-                                <span class="text-[10px] font-mono text-indigo-400 bg-indigo-400/10 px-2 py-1 rounded uppercase tracking-tighter">Paper_2024_Analytic</span>
-                                <i data-lucide="file-text" class="text-zinc-800 group-hover:text-indigo-500 transition-colors w-5 h-5"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4 group-hover:text-indigo-400 transition-colors text-white">Breast Cancer Detection Analysis</h3>
-                            <p class="text-zinc-500 text-sm leading-relaxed mb-8">
-                                Implementing Logistic Regression from scratch using NumPy to evaluate diagnostic accuracy on Kaggle datasets. Focus on evaluating convergence without high-level ML frameworks.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span class="text-[9px] font-mono text-zinc-400 border border-white/5 px-2 py-1 rounded-md">NumPy</span>
-                                <span class="text-[9px] font-mono text-zinc-400 border border-white/5 px-2 py-1 rounded-md">Med-AI</span>
-                                <span class="text-[9px] font-mono text-zinc-400 border border-white/5 px-2 py-1 rounded-md">Regression</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-end border-t border-white/5 pt-6">
-                            <div>
-                                <div class="text-[8px] uppercase text-zinc-600 mb-1 tracking-widest">Observed Accuracy</div>
-                                <div class="text-xl font-bold font-mono text-white">92%</div>
-                            </div>
-                            <a href="logisticregression_for_breastCancer.pdf" target="_blank" class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-indigo-400 hover:text-white transition-colors">
-                                Check the paper<i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="stat-card">
+              <p>Cancer Detection Accuracy</p>
+              <strong>92%</strong>
             </div>
-        </section>
-
-        <!-- PROJECTS SECTION -->
-        <section id="projects" class="py-32 px-6 lg:px-24">
-            <h2 class="text-4xl font-bold mb-16 flex items-center gap-4 text-white">
-                <div class="h-px w-12 bg-zinc-700"></div> Engineering Artifacts
-            </h2>
-            <div id="project-grid" class="grid md:grid-cols-2 gap-8 text-white">
-                <!-- Injected by JS -->
+            <div class="stat-card">
+              <p>Published Research Papers</p>
+              <strong class="stat-value" data-target="2">0</strong>
             </div>
-        </section>
-
-        <!-- SKILLS SECTION -->
-        <section id="skills" class="py-32 px-6 lg:px-24 bg-indigo-600/[0.01]">
-            <h2 class="text-4xl font-bold mb-20 text-center uppercase tracking-widest text-white">Neural Topology</h2>
-            <div id="skills-grid" class="grid md:grid-cols-3 gap-12 text-white">
-                <!-- Injected by JS -->
+            <div class="stat-card">
+              <p>Graduation Year</p>
+              <strong>2027</strong>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- EXPERIENCE SECTION -->
-        <section id="experience" class="py-32 px-6 lg:px-24">
-            <div class="grid lg:grid-cols-2 gap-24">
-                <div>
-                    <h2 class="text-3xl font-bold mb-12 flex items-center gap-4 italic uppercase tracking-tighter text-white">
-                        <i data-lucide="briefcase" class="text-indigo-500 w-6 h-6"></i> Professional Track
-                    </h2>
-                    <div class="space-y-8 border-l border-white/10 pl-8">
-                        <div class="relative">
-                            <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-indigo-600 border-4 border-black"></div>
-                            <h3 class="font-bold text-xl text-white text-glow">Math Tutor (Remote)</h3>
-                            <p class="text-indigo-400 text-sm mb-4">Find Tutors, UK | 2024 – 2025</p>
-                            <p class="text-zinc-500 text-sm italic">Delivered individualized instruction and study plans to boost performance.</p>
-                        </div>
-                        <div class="relative">
-                            <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-zinc-800 border-4 border-black"></div>
-                            <h3 class="font-bold text-xl text-white">Technical Blogger</h3>
-                            <p class="text-indigo-400 text-sm mb-4">Through My Eyes AI/ML | Ongoing</p>
-                            <p class="text-zinc-500 text-sm italic">Documenting personal projects and learning experiences in the field of AI.</p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h2 class="text-3xl font-bold mb-12 flex items-center gap-4 italic uppercase tracking-tighter text-white">
-                        <i data-lucide="graduation-cap" class="text-indigo-500 w-6 h-6"></i> Academic Engine
-                    </h2>
-                    <div class="space-y-8">
-                        <div class="glass-panel p-8 rounded-3xl">
-                            <div class="flex justify-between items-start mb-4">
-                                <h3 class="font-bold text-xl text-white">B.Tech CS (AI)</h3>
-                                <span class="text-[10px] font-mono bg-white/5 px-2 py-1 rounded text-zinc-400 tracking-tighter">CGPA: ACTIVE</span>
-                            </div>
-                            <p class="text-indigo-400 text-sm mb-4">Parul University, Vadodara | 2023 – 2027</p>
-                            <p class="text-zinc-500 text-sm leading-relaxed">Focusing on deep learning, computational mathematics, and neural architectures.</p>
-                        </div>
-                        <div class="glass-panel p-8 rounded-3xl opacity-60">
-                            <h3 class="font-bold text-lg mb-2 text-white text-glow">Higher Secondary</h3>
-                            <p class="text-indigo-400 text-xs text-zinc-500 uppercase tracking-tighter">Sri Chaitanya College | 2021 – 2023</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <section class="section-shell" id="expertise">
+        <div class="container">
+          <div class="section-head reveal" data-reveal="up">
+            <p class="eyebrow">Core Skills</p>
+            <h2>Core capabilities I use to build ML systems</h2>
+          </div>
 
-        <!-- SIGNAL & INQUIRY SECTION -->
-        <section id="inquiry" class="py-32 px-6 lg:px-24">
-            <h2 class="text-4xl font-bold mb-16 text-center uppercase tracking-[0.2em] text-white">Signal & Inquiry</h2>
-            <div class="grid lg:grid-cols-1 gap-12 max-w-7xl mx-auto">
-                <!-- SECURE DATA TRANSMISSION (HR FRIENDLY) -->
-                <div class="bg-[#050505]/90 border border-white/10 rounded-2xl overflow-hidden shadow-2xl terminal-glow flex flex-col">
-                    <div class="p-4 bg-white/5 flex items-center justify-between border-b border-white/10">
-                        <div class="text-[10px] font-mono text-indigo-400/70 uppercase tracking-widest flex items-center gap-2">
-                            <i data-lucide="shield" class="w-3 h-3"></i> Secure_Data_Transmission
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-green-500 rounded-full status-dot"></div>
-                            <span class="text-[9px] font-mono text-zinc-600 uppercase tracking-tighter">UPLINK_READY</span>
-                        </div>
-                    </div>
+          <div class="expertise-grid">
+            <article class="feature-card reveal" data-reveal="up">
+              <h3>Programming Foundation</h3>
+              <p>Strong fundamentals for writing optimized, maintainable ML code and utilities.</p>
+              <ul>
+                <li>Python, C, OOP</li>
+                <li>Data Structures, DBMS</li>
+                <li>Versioned engineering workflow</li>
+              </ul>
+            </article>
+            <article class="feature-card reveal" data-reveal="up" data-delay="100">
+              <h3>AI &amp; Machine Learning</h3>
+              <p>Hands-on model development with both frameworks and scratch-built implementations.</p>
+              <ul>
+                <li>TensorFlow, Neural Networks</li>
+                <li>Deep Learning + NLP</li>
+                <li>Custom algorithm implementation</li>
+              </ul>
+            </article>
+            <article class="feature-card reveal" data-reveal="up" data-delay="200">
+              <h3>Research + Delivery</h3>
+              <p>Academic research translated into practical artifacts and technical communication.</p>
+              <ul>
+                <li>Technical blogging</li>
+                <li>Experiment writeups</li>
+                <li>Project-first learning approach</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
 
-                    <div class="p-8 flex flex-col h-full bg-gradient-to-b from-transparent to-indigo-900/5">
-                        <form id="contact-form" method="POST" class="space-y-6 flex flex-col h-full">
-                            <div class="space-y-6">
-                                <div>
-                                    <div class="flex justify-between items-center mb-2 px-1">
-                                        <label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest font-bold">Source_Identity</label>
-                                        <span class="text-[9px] font-mono text-zinc-600 italic uppercase tracking-tighter">[Full Name / Org]</span>
-                                    </div>
-                                    <input 
-                                        type="text" name="name" required placeholder="Who is initiating contact?"
-                                        class="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-sm text-white placeholder:text-zinc-800 transition-all focus:border-indigo-500"
-                                    >
-                                </div>
-                                <div>
-                                    <div class="flex justify-between items-center mb-2 px-1">
-                                        <label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest font-bold">Return_Path</label>
-                                        <span class="text-[9px] font-mono text-zinc-600 italic uppercase tracking-tighter">[Email Address]</span>
-                                    </div>
-                                    <input 
-                                        type="email" name="email" required placeholder="Where should I send the reply?"
-                                        class="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-sm text-white placeholder:text-zinc-800 transition-all focus:border-indigo-500"
-                                    >
-                                </div>
-                                <div class="flex-grow">
-                                    <div class="flex justify-between items-center mb-2 px-1">
-                                        <label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest font-bold">Data_Payload</label>
-                                        <span class="text-[9px] font-mono text-zinc-600 italic uppercase tracking-tighter">[Your Message]</span>
-                                    </div>
-                                    <textarea 
-                                        name="message" required placeholder="Details of your inquiry or recruitment..."
-                                        class="w-full flex-grow bg-white/5 border border-white/10 rounded-xl py-4 px-4 text-sm text-white placeholder:text-zinc-800 transition-all resize-none focus:border-indigo-500 min-h-[140px]"
-                                    ></textarea>
-                                </div>
-                            </div>
+      <section class="section-shell" id="journey">
+        <div class="container">
+          <div class="section-head reveal" data-reveal="up">
+            <p class="eyebrow">Journey Timeline</p>
+            <h2>Academic, research, and professional milestones</h2>
+          </div>
 
-                            <div id="form-status" class="hidden text-center text-[10px] font-mono py-2 rounded uppercase tracking-[0.2em] transition-all"></div>
+          <div class="timeline">
+            <article class="timeline-item reveal" data-reveal="left">
+              <span>01</span>
+              <div>
+                <h3>B.Tech CS (AI), Parul University</h3>
+                <p>Started in 2023 and focused on deep learning, computational mathematics, and neural architectures.</p>
+              </div>
+            </article>
+            <article class="timeline-item reveal" data-reveal="left" data-delay="80">
+              <span>02</span>
+              <div>
+                <h3>Independent AI Project Development</h3>
+                <p>
+                  Built and published production-style ML projects including myMLlib, spam classification,
+                  medical inference, and rent prediction systems.
+                </p>
+              </div>
+            </article>
+            <article class="timeline-item reveal" data-reveal="left" data-delay="140">
+              <span>03</span>
+              <div>
+                <h3>Technical Blogger - Through My Eyes AI/ML</h3>
+                <p>Ongoing work documenting personal projects and hands-on AI/ML experiments.</p>
+              </div>
+            </article>
+            <article class="timeline-item reveal" data-reveal="left" data-delay="200">
+              <span>04</span>
+              <div>
+                <h3>Research Papers Published</h3>
+                <p>AI Companion Theoretical Frameworks (2026) and Breast Cancer Detection Analysis (2025).</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-                            <button type="submit" id="submit-btn" class="w-full bg-white text-black font-bold py-4 rounded-xl uppercase tracking-[0.2em] text-xs hover:bg-indigo-400 hover:text-white transition-all flex items-center justify-center gap-3 shadow-lg active:scale-95 group">
-                                <span class="group-hover:hidden">Initiate_Uplink</span>
-                                <span class="hidden group-hover:inline">Send Message</span>
-                                <i data-lucide="send" class="w-4 h-4"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
+      <section class="section-shell" id="projects">
+        <div class="container">
+          <div class="section-head reveal" data-reveal="up">
+            <p class="eyebrow">Engineering Artifacts</p>
+            <h2>Selected builds from my active portfolio</h2>
+          </div>
 
-            </div>
-        </section>
+          <div class="project-grid">
+            <article class="project-card tilt reveal" data-reveal="up">
+              <p class="pill">Library Dev</p>
+              <h3>myMLlib</h3>
+              <p>A custom ML library implementing core algorithms from scratch to master first principles.</p>
+              <a href="pages/projects.html#mymllib">Open project layer</a>
+            </article>
+            <article class="project-card tilt reveal" data-reveal="up" data-delay="90">
+              <p class="pill">NLP + Deep Learning</p>
+              <h3>Email Spam Classifier</h3>
+              <p>TensorFlow and TF-IDF based spam classifier with 99% observed accuracy.</p>
+              <a href="pages/projects.html#spam">Open project layer</a>
+            </article>
+            <article class="project-card tilt reveal" data-reveal="up" data-delay="180">
+              <p class="pill">Medical AI</p>
+              <h3>Breast Cancer Detection</h3>
+              <p>NumPy-first implementation of logistic regression with 92% dataset accuracy.</p>
+              <a href="pages/projects.html#cancer">Open project layer</a>
+            </article>
+          </div>
+        </div>
+      </section>
 
-        <!-- FOOTER SECTION -->
-        <footer class="py-20 border-t border-white/5 text-center px-6">
-            <div class="text-zinc-600 text-[10px] font-mono tracking-[0.5em] mb-12 uppercase">
-                Research_Led_Engineering // Mahesh_Reddy_2025
-            </div>
-            <div class="flex justify-center gap-12 text-zinc-500 mb-12">
-                <a href="https://github.com/MaheshReddy-ML" target="_blank"><i data-lucide="github" class="hover:text-white transition-colors cursor-pointer w-5 h-5"></i></a>
-                <a href="https://www.linkedin.com/in/maheshreddy04" target="_blank"><i data-lucide="linkedin" class="hover:text-white transition-colors cursor-pointer w-5 h-5"></i></a>
-                <a href="mailto:hemu171807@gmail.com"><i data-lucide="mail" class="hover:text-white transition-colors cursor-pointer w-5 h-5"></i></a>
-                <a href="tel:+919177319640"><i data-lucide="phone" class="hover:text-white transition-colors cursor-pointer w-5 h-5"></i></a>
-            </div>
-            <div class="text-zinc-700 text-[8px] uppercase tracking-widest font-mono">
-                Built with Vanilla JS & Gemini 2.5 Flash Preview
-            </div>
-        </footer>
+      <section class="section-shell final-cta">
+        <div class="container cta-panel reveal" data-reveal="up">
+          <p class="eyebrow">Get in Touch</p>
+          <h2>Open to research, internships, and AI engineering collaborations</h2>
+          <p>
+            If you are building serious AI products or exploring research-backed implementations, I&apos;d love
+            to connect and contribute.
+          </p>
+          <a href="pages/contact.html" class="btn btn-primary magnetic">Contact Me</a>
+        </div>
+      </section>
     </main>
 
-    <script>
-        // --- SECURE CONFIG ---
-        const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnnbedye";
-        // --- DATA ---
-        const PROJECTS = [
-            {
-                title: "myMLlib",
-                acc: "CUSTOM",
-                desc: "A comprehensive custom ML library implementing core algorithms from scratch to understand first principles.",
-                tags: ["Library Dev", "Python", "Algorithms"],
-                link: "https://github.com/MaheshReddy-ML/myMLlib"
-            },
-            {
-                title: "Email Spam Classifier",
-                acc: "99%",
-                desc: "Deep learning spam detection system using TensorFlow and TF-IDF vectorization. Reached top-tier accuracy.",
-                tags: ["TensorFlow", "Deep Learning", "NLP"],
-                link: "https://github.com/MaheshReddy-ML/EmailFilterAI"
-            },
-            {
-                title: "Breast Cancer Detection",
-                acc: "92%",
-                desc: "Scratch-built implementation using NumPy to evaluate diagnostic accuracy on Kaggle datasets.",
-                tags: ["NumPy", "Med-AI", "Inference"],
-                link: "https://github.com/MaheshReddy-ML/Breast-Cancer-Detection"
-            },
-            {
-                title: "Rent Predictor",
-                acc: "MATH-ONLY",
-                desc: "Hyderabad House Rent model built without scikit-learn to demonstrate raw mathematical implementation.",
-                tags: ["Math", "Python", "Predictive"],
-                link: "https://github.com/MaheshReddy-ML/Hyderabad_House_Rent_Predictor"
-            }
-        ];
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>&copy; <span id="year"></span> Mahesh Reddy. Research-led engineering.</p>
+        <div>
+          <a href="pages/research.html">Research</a>
+          <a href="pages/projects.html">Projects</a>
+          <a href="pages/contact.html">Contact</a>
+        </div>
+      </div>
+    </footer>
 
-        const SKILLS = [
-            { category: "Programming", items: ["Python", "C", "OOPS", "Data Structures", "DBMS"] },
-            { category: "AI & ML", items: ["TensorFlow", "Neural Networks", "Deep Learning", "Custom Algos"] },
-            { category: "Tools", items: ["Git", "GitHub", "Version Control"] }
-        ];
-
-        // --- NEURAL CANVAS LOGIC ---
-        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
-        const isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-        const lowCpuDevice = typeof navigator !== 'undefined' && navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
-        const liteMode = prefersReducedMotion || isMobileViewport || isCoarsePointer || lowCpuDevice;
-        const hasCanvasGlow = !liteMode;
-        const maxFps = liteMode ? 30 : 45;
-        const frameInterval = 1000 / maxFps;
-        const canvas = document.getElementById('neural-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let mouse = {
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-            tx: window.innerWidth / 2,
-            ty: window.innerHeight / 2
-        };
-        let lastFrameTime = 0;
-        let animationFrameId = null;
-        let isAnimating = false;
-        let latestMouseX = mouse.tx;
-        let latestMouseY = mouse.ty;
-        let mouseRafQueued = false;
-        let resizeDebounceId;
-
-        function getParticleCount() {
-            const viewportArea = window.innerWidth * window.innerHeight;
-            if (liteMode) {
-                return Math.max(30, Math.min(80, Math.floor(viewportArea / 18000)));
-            }
-            return Math.max(55, Math.min(130, Math.floor(viewportArea / 12000)));
-        }
-
-        function initCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            particles = [];
-            const particleCount = getParticleCount();
-            for (let i = 0; i < particleCount; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const speed = Math.random() * 0.35 + 0.15;
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: Math.cos(angle) * speed,
-                    vy: Math.sin(angle) * speed,
-                    size: Math.random() * 2 + 1
-                });
-            }
-        }
-
-        function renderNeuralFrame(delta = 1) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            if (!prefersReducedMotion) {
-                mouse.x += (mouse.tx - mouse.x) * 0.08 * delta;
-                mouse.y += (mouse.ty - mouse.y) * 0.08 * delta;
-            }
-
-            const pointerX = mouse.x || canvas.width / 2;
-            const pointerY = mouse.y || canvas.height / 2;
-
-            const auraRadius = liteMode ? 160 : 220;
-            const aura = ctx.createRadialGradient(pointerX, pointerY, 0, pointerX, pointerY, auraRadius);
-            aura.addColorStop(0, "rgba(99, 102, 241, 0.10)");
-            aura.addColorStop(1, "rgba(99, 102, 241, 0)");
-            ctx.fillStyle = aura;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // gentle parallax based on mouse position
-            ctx.save();
-            const tx = pointerX ? (pointerX - canvas.width / 2) / 48 : 0;
-            const ty = pointerY ? (pointerY - canvas.height / 2) / 48 : 0;
-            ctx.translate(tx, ty);
-
-            const linkDistance = liteMode
-                ? Math.max(90, Math.min(130, window.innerWidth * 0.09))
-                : Math.max(120, Math.min(185, window.innerWidth * 0.11));
-            const linkDistanceSq = linkDistance * linkDistance;
-            const mouseLinkDistance = linkDistance + (liteMode ? 35 : 65);
-            const mouseLinkDistanceSq = mouseLinkDistance * mouseLinkDistance;
-
-            particles.forEach((p, i) => {
-                if (!prefersReducedMotion) {
-                    p.x += p.vx * delta;
-                    p.y += p.vy * delta;
-                }
-
-                if (p.x < -10) p.x = canvas.width + 10;
-                if (p.x > canvas.width + 10) p.x = -10;
-                if (p.y < -10) p.y = canvas.height + 10;
-                if (p.y > canvas.height + 10) p.y = -10;
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dx = p.x - p2.x;
-                    const dy = p.y - p2.y;
-                    const distSq = dx * dx + dy * dy;
-
-                    if (distSq < linkDistanceSq) {
-                        const dist = Math.sqrt(distSq);
-                        ctx.beginPath();
-                        ctx.lineWidth = 0.9;
-                        ctx.strokeStyle = `rgba(99, 102, 241, ${0.22 * (1 - dist / linkDistance)})`;
-                        if (hasCanvasGlow) {
-                            ctx.shadowBlur = 8;
-                            ctx.shadowColor = 'rgba(99,102,241,0.14)';
-                        }
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                        if (hasCanvasGlow) ctx.shadowBlur = 0;
-                    }
-                }
-
-                if (!liteMode && Number.isFinite(pointerX)) {
-                    const dx = p.x - pointerX;
-                    const dy = p.y - pointerY;
-                    const mDistSq = dx * dx + dy * dy;
-                    if (mDistSq < mouseLinkDistanceSq) {
-                        const mDist = Math.sqrt(mDistSq);
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(129, 140, 248, ${0.12 * (1 - mDist / mouseLinkDistance)})`;
-                        ctx.lineWidth = 0.8;
-                        if (hasCanvasGlow) {
-                            ctx.shadowBlur = 7;
-                            ctx.shadowColor = 'rgba(129,140,248,0.1)';
-                        }
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(pointerX, pointerY);
-                        ctx.stroke();
-                        if (hasCanvasGlow) ctx.shadowBlur = 0;
-                    }
-                }
-
-                ctx.fillStyle = "rgba(99, 102, 241, 0.7)";
-                ctx.beginPath();
-                if (hasCanvasGlow) {
-                    ctx.shadowBlur = 6;
-                    ctx.shadowColor = 'rgba(99,102,241,0.14)';
-                }
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-                if (hasCanvasGlow) ctx.shadowBlur = 0;
-            });
-
-            ctx.restore();
-        }
-
-        function animate(timestamp = 0) {
-            if (!isAnimating) return;
-            animationFrameId = requestAnimationFrame(animate);
-            if (lastFrameTime && timestamp - lastFrameTime < frameInterval) return;
-            const delta = lastFrameTime ? Math.min((timestamp - lastFrameTime) / 16.67, 2) : 1;
-            lastFrameTime = timestamp;
-            renderNeuralFrame(delta);
-        }
-
-        function startAnimation() {
-            if (isAnimating) return;
-            isAnimating = true;
-            lastFrameTime = 0;
-            animationFrameId = requestAnimationFrame(animate);
-        }
-
-        function stopAnimation() {
-            isAnimating = false;
-            if (animationFrameId) cancelAnimationFrame(animationFrameId);
-            animationFrameId = null;
-        }
-
-        // --- RENDER FUNCTIONS ---
-        function renderProjects() {
-            const grid = document.getElementById('project-grid');
-            grid.innerHTML = PROJECTS.map(p => `
-                <a href="${p.link}" target="_blank" class="group project-card p-10 bg-white/[0.02] border border-white/5 rounded-3xl glass-panel relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-8 text-xs font-mono text-indigo-500 group-hover:text-indigo-400 transition-colors uppercase tracking-tighter font-bold">
-                        ${p.acc}
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">${p.title}</h3>
-                    <p class="text-zinc-500 text-sm mb-8 leading-relaxed">${p.desc}</p>
-                    <div class="flex flex-wrap gap-2">
-                        ${p.tags.map(t => `<span class="text-[9px] font-mono border border-white/10 px-2 py-1 rounded uppercase text-zinc-400 tracking-tighter">${t}</span>`).join('')}
-                    </div>
-                </a>
-            `).join('');
-        }
-
-        function renderSkills() {
-            const grid = document.getElementById('skills-grid');
-            grid.innerHTML = SKILLS.map(s => `
-                <div class="space-y-6">
-                    <div class="text-xs font-mono text-indigo-500 uppercase tracking-widest flex items-center gap-2">
-                        <div class="w-1 h-1 bg-indigo-500 rounded-full"></div> ${s.category}
-                    </div>
-                    <div class="space-y-2">
-                        ${s.items.map(item => `
-                            <div class="p-4 bg-white/5 border border-white/5 rounded-xl hover:bg-indigo-500/10 transition-colors flex justify-between items-center group skill-item">
-                                <span class="text-zinc-400 group-hover:text-white transition-colors">${item}</span>
-                                <i data-lucide="shield" class="w-3.5 h-3.5 text-zinc-700 group-hover:text-indigo-500 transition-colors"></i>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `).join('');
-            lucide.createIcons();
-        }
-
-        function animateStats() {
-            const statEls = document.querySelectorAll('.stat-value');
-            statEls.forEach((el, idx) => {
-                const target = Number(el.dataset.target || 0);
-                if (prefersReducedMotion) {
-                    el.textContent = String(target);
-                    return;
-                }
-
-                const duration = 1200 + idx * 160;
-                const startTime = performance.now();
-                const tick = (now) => {
-                    const progress = Math.min((now - startTime) / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    el.textContent = String(Math.round(target * eased));
-                    if (progress < 1) requestAnimationFrame(tick);
-                };
-                requestAnimationFrame(tick);
-            });
-        }
-
-        function setupGsapAnimations() {
-            if (prefersReducedMotion || liteMode) return;
-
-            gsap.registerPlugin(ScrollTrigger);
-
-            gsap.from(".lg\\:col-span-8 > *", {
-                opacity: 0,
-                y: 30,
-                duration: 0.8,
-                stagger: 0.18,
-                ease: "power3.out",
-                delay: 0.4
-            });
-
-            gsap.from(".profile-frame", {
-                opacity: 0,
-                scale: 0.88,
-                duration: 1,
-                ease: "power3.out",
-                delay: 0.7
-            });
-
-            gsap.from(".nav-link", {
-                opacity: 0,
-                y: -20,
-                duration: 0.6,
-                stagger: 0.09,
-                ease: "power3.out",
-                delay: 0.2
-            });
-
-            gsap.from("#project-grid .project-card", {
-                scrollTrigger: { trigger: "#projects", start: "top 72%", once: true },
-                opacity: 0,
-                y: 50,
-                duration: 0.8,
-                stagger: 0.14,
-                ease: "power3.out"
-            });
-
-            gsap.from("#skills-grid .skill-item", {
-                scrollTrigger: { trigger: "#skills", start: "top 75%", once: true },
-                opacity: 0,
-                x: -24,
-                duration: 0.5,
-                stagger: 0.06,
-                ease: "power2.out"
-            });
-
-            document.querySelectorAll('section, footer').forEach((el) => {
-                const heading = el.querySelector('h2');
-                const content = el.querySelectorAll('p, .grid, .space-y-8, form, .flex-wrap, .text-zinc-600, .text-zinc-700');
-
-                if (heading) {
-                    gsap.from(heading, {
-                        scrollTrigger: { trigger: el, start: "top 80%", once: true },
-                        opacity: 0,
-                        y: 40,
-                        duration: 0.8,
-                        ease: "power3.out"
-                    });
-                }
-                if (content.length) {
-                    gsap.from(content, {
-                        scrollTrigger: { trigger: el, start: "top 70%", once: true },
-                        opacity: 0,
-                        y: 40,
-                        duration: 0.8,
-                        stagger: 0.12,
-                        ease: "power3.out"
-                    });
-                }
-            });
-
-            ScrollTrigger.refresh();
-        }
-
-
-        // --- CONTACT FORM HANDLING ---
-        const contactForm = document.getElementById('contact-form');
-        const submitBtn = document.getElementById('submit-btn');
-        const statusEl = document.getElementById('form-status');
-
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const originalText = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `Transmitting Signal...`;
-            
-            try {
-                const response = await fetch(FORMSPREE_ENDPOINT, {
-                    method: 'POST',
-                    body: new FormData(contactForm),
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    statusEl.innerText = ">> SIGNAL TRANSMITTED SUCCESSFULLY";
-                    statusEl.className = "text-center text-[10px] font-mono py-2 rounded uppercase tracking-[0.2em] text-green-400 bg-green-500/10 block mt-2";
-                    statusEl.classList.remove('hidden');
-                    contactForm.reset();
-                } else {
-                    throw new Error();
-                }
-            } catch (err) {
-                statusEl.innerText = "!! UPLINK FAILURE - TRY AGAIN";
-                statusEl.className = "text-center text-[10px] font-mono py-2 rounded uppercase tracking-[0.2em] text-red-400 bg-red-500/10 block mt-2";
-                statusEl.classList.remove('hidden');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-                setTimeout(() => {
-                    statusEl.classList.add('hidden');
-                }, 5000);
-            }
-        });
-
-        // --- INITIALIZE ---
-        window.addEventListener('load', () => {
-            if (liteMode) document.body.classList.add('perf-lite');
-            initCanvas(); 
-            renderProjects();
-            renderSkills();
-            lucide.createIcons();
-            // animate numeric stats after render
-            animateStats();
-            setupGsapAnimations();
-
-            if (prefersReducedMotion || liteMode) {
-                renderNeuralFrame(0);
-            } else {
-                startAnimation();
-            }
-
-            // entrance animation for remaining terminal(s)
-            setTimeout(() => {
-                document.querySelectorAll('.terminal-enter').forEach((el, idx) => {
-                    setTimeout(() => el.classList.add('enter-active'), idx * 140);
-                });
-            }, 200);
-        });
-
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeDebounceId);
-            resizeDebounceId = setTimeout(() => {
-                initCanvas();
-                if (prefersReducedMotion || liteMode) renderNeuralFrame(0);
-            }, 150);
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            latestMouseX = e.clientX;
-            latestMouseY = e.clientY;
-            if (mouseRafQueued) return;
-            mouseRafQueued = true;
-            requestAnimationFrame(() => {
-                mouseRafQueued = false;
-                mouse.tx = latestMouseX;
-                mouse.ty = latestMouseY;
-                if (prefersReducedMotion || liteMode) {
-                    mouse.x = latestMouseX;
-                    mouse.y = latestMouseY;
-                    renderNeuralFrame(0);
-                }
-            });
-        }, { passive: true });
-
-        window.addEventListener('mouseleave', () => {
-            mouse.tx = window.innerWidth / 2;
-            mouse.ty = window.innerHeight / 2;
-        }, { passive: true });
-
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                stopAnimation();
-            } else if (!prefersReducedMotion && !liteMode) {
-                startAnimation();
-            }
-        });
-        
-    </script>
-</body>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
