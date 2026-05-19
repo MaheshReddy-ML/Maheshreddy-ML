@@ -588,10 +588,6 @@ flowchart TD
   <img alt="GitHub contribution animation" src="https://raw.githubusercontent.com/MaheshReddy-ML/Maheshreddy-ML/output/github-contribution-grid-snake.svg" />
 </picture>
 
-<br />
-
-<sub>This animated contribution graph appears after the GitHub Action generates the SVG into the output branch.</sub>
-
 </div>
 
 ---
