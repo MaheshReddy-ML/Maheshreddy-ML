@@ -6,7 +6,7 @@
     <title>Project Layers | Mahesh Reddy</title>
     <meta
       name="description"
-      content="Deep-dive into Mahesh Reddy's AI/ML projects including myMLlib, Email Spam Classifier, Shakespeare Text Generator LSTM, Breast Cancer Detection, and Rent Predictor."
+      content="Deep-dive into Mahesh Reddy's AI/ML projects including customer intelligence, student risk prediction, sign language detection, F1 pit prediction, myMLlib, EmailFilterAI, and research builds."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -61,19 +61,135 @@
             <button class="filter-chip" data-filter="scratch">From Scratch</button>
             <button class="filter-chip" data-filter="deep">Deep Learning</button>
             <button class="filter-chip" data-filter="nlp">NLP</button>
+            <button class="filter-chip" data-filter="vision">Vision</button>
+            <button class="filter-chip" data-filter="app">Apps</button>
+            <button class="filter-chip" data-filter="opensource">Open Source</button>
             <button class="filter-chip" data-filter="predictive">Predictive</button>
           </div>
 
           <div class="project-layer-grid" id="projectLayers">
             <article
+              id="customer-intelligence"
+              class="project-layer-card tilt reveal"
+              data-category="deep predictive app"
+              data-reveal="up"
+            >
+              <div class="layer-header">
+                <p class="pill">Customer AI</p>
+                <span>Layer 01</span>
+              </div>
+              <h3>Customer Intelligence System</h3>
+              <p>
+                End-to-end customer segmentation and recommendation intelligence using RFM features,
+                K-Means, Random Forest baselines, neural embeddings, and business-readable outputs.
+              </p>
+              <ul>
+                <li>RFM-style feature engineering from retail transaction data</li>
+                <li>Clustering, neural representation learning, PCA/t-SNE visuals</li>
+                <li>Segment labels and recommendation actions for business users</li>
+              </ul>
+              <a
+                href="https://github.com/MaheshReddy-ML/customer-intelligence-system"
+                target="_blank"
+                rel="noreferrer"
+                >View Repository</a
+              >
+            </article>
+
+            <article
+              id="student-risk"
+              class="project-layer-card tilt reveal"
+              data-category="predictive app"
+              data-reveal="up"
+              data-delay="60"
+            >
+              <div class="layer-header">
+                <p class="pill">ML Web App</p>
+                <span>Layer 02</span>
+              </div>
+              <h3>Student Performance Risk Portal</h3>
+              <p>
+                Production-style academic risk predictor with a scikit-learn pipeline, JSON API,
+                confidence scores, top influencing factors, and actionable recommendations.
+              </p>
+              <ul>
+                <li>Low, Medium, and High academic risk classification</li>
+                <li>REST endpoints for prediction and health checks</li>
+                <li>Single-page dashboard with probability and factor insights</li>
+              </ul>
+              <a
+                href="https://github.com/MaheshReddy-ML/Student-Performance-Risk-Portal"
+                target="_blank"
+                rel="noreferrer"
+                >View Repository</a
+              >
+            </article>
+
+            <article
+              id="sign-language"
+              class="project-layer-card tilt reveal"
+              data-category="deep vision app"
+              data-reveal="up"
+              data-delay="120"
+            >
+              <div class="layer-header">
+                <p class="pill">Computer Vision</p>
+                <span>Layer 03</span>
+              </div>
+              <h3>Sign Language Detection</h3>
+              <p>
+                Real-time sign-language gesture classifier combining CNN training, a SignFormer-style
+                architecture, MediaPipe hand detection, and webcam inference.
+              </p>
+              <ul>
+                <li>Gesture-to-text classification workflow</li>
+                <li>CNN and transformer-style model exploration</li>
+                <li>Real-time inference path using OpenCV and MediaPipe</li>
+              </ul>
+              <a
+                href="https://github.com/MaheshReddy-ML/Sign_language_detecttion"
+                target="_blank"
+                rel="noreferrer"
+                >View Repository</a
+              >
+            </article>
+
+            <article
+              id="f1-pit"
+              class="project-layer-card tilt reveal"
+              data-category="predictive app"
+              data-reveal="up"
+              data-delay="180"
+            >
+              <div class="layer-header">
+                <p class="pill">Motorsport ML</p>
+                <span>Layer 04</span>
+              </div>
+              <h3>F1 Pit Prediction</h3>
+              <p>
+                Kaggle-style model that predicts whether an F1 car will pit on the next lap using
+                telemetry, tyre condition, race progress, lap signals, and race-aware features.
+              </p>
+              <ul>
+                <li>CatBoost classifier with GroupKFold validation</li>
+                <li>Threshold tuning to optimize F1 score</li>
+                <li>Derived features for degradation, pressure, and traffic risk</li>
+              </ul>
+              <a href="https://github.com/MaheshReddy-ML/F1-Pit" target="_blank" rel="noreferrer"
+                >View Repository</a
+              >
+            </article>
+
+            <article
               id="mymllib"
               class="project-layer-card tilt reveal"
               data-category="scratch predictive"
               data-reveal="up"
+              data-delay="240"
             >
               <div class="layer-header">
                 <p class="pill">Library Development</p>
-                <span>Layer 01</span>
+                <span>Layer 05</span>
               </div>
               <h3>myMLlib</h3>
               <p>
@@ -95,11 +211,11 @@
               class="project-layer-card tilt reveal"
               data-category="deep nlp"
               data-reveal="up"
-              data-delay="80"
+              data-delay="300"
             >
               <div class="layer-header">
                 <p class="pill">NLP System</p>
-                <span>Layer 02</span>
+                <span>Layer 06</span>
               </div>
               <h3>Email Spam Classifier</h3>
               <p>
@@ -121,11 +237,11 @@
               class="project-layer-card tilt reveal"
               data-category="scratch deep"
               data-reveal="up"
-              data-delay="140"
+              data-delay="360"
             >
               <div class="layer-header">
                 <p class="pill">Medical AI</p>
-                <span>Layer 03</span>
+                <span>Layer 07</span>
               </div>
               <h3>Breast Cancer Detection</h3>
               <p>
@@ -150,11 +266,11 @@
               class="project-layer-card tilt reveal"
               data-category="deep nlp"
               data-reveal="up"
-              data-delay="200"
+              data-delay="420"
             >
               <div class="layer-header">
                 <p class="pill">Generative NLP</p>
-                <span>Layer 04</span>
+                <span>Layer 08</span>
               </div>
               <h3>Shakespeare Text Generator LSTM</h3>
               <p>
@@ -174,10 +290,10 @@
               >
             </article>
 
-            <article class="project-layer-card tilt reveal" data-category="scratch predictive" data-reveal="up" data-delay="260">
+            <article class="project-layer-card tilt reveal" data-category="scratch predictive" data-reveal="up" data-delay="480">
               <div class="layer-header">
                 <p class="pill">Math-Only Modeling</p>
-                <span>Layer 05</span>
+                <span>Layer 09</span>
               </div>
               <h3>Hyderabad House Rent Predictor</h3>
               <p>
@@ -197,10 +313,39 @@
               >
             </article>
 
-            <article class="project-layer-card tilt reveal" data-category="nlp deep" data-reveal="up" data-delay="320">
+            <article
+              id="lstm-chatbot"
+              class="project-layer-card tilt reveal"
+              data-category="nlp deep"
+              data-reveal="up"
+              data-delay="540"
+            >
+              <div class="layer-header">
+                <p class="pill">Conversational AI</p>
+                <span>Layer 10</span>
+              </div>
+              <h3>LSTM Chatbot with Word2Vec</h3>
+              <p>
+                End-to-end conversational AI project using tokenization, Word2Vec semantic embeddings,
+                LSTM sequence modeling, and natural language response generation.
+              </p>
+              <ul>
+                <li>Word2Vec embedding training for semantic representation</li>
+                <li>LSTM-based sequence learning with TensorFlow/Keras</li>
+                <li>Pipeline from text preprocessing to response generation</li>
+              </ul>
+              <a
+                href="https://github.com/MaheshReddy-ML/lstm-chatbot-word2vec"
+                target="_blank"
+                rel="noreferrer"
+                >View Repository</a
+              >
+            </article>
+
+            <article class="project-layer-card tilt reveal" data-category="nlp deep" data-reveal="up" data-delay="600">
               <div class="layer-header">
                 <p class="pill">Research Build</p>
-                <span>Layer 06</span>
+                <span>Layer 11</span>
               </div>
               <h3>AI Companion Framework</h3>
               <p>
@@ -215,10 +360,62 @@
               <a href="research.html">Open Research Page</a>
             </article>
 
-            <article class="project-layer-card tilt reveal" data-category="predictive" data-reveal="up" data-delay="380">
+            <article
+              id="opensource-aegis"
+              class="project-layer-card tilt reveal"
+              data-category="opensource predictive"
+              data-reveal="up"
+              data-delay="660"
+            >
+              <div class="layer-header">
+                <p class="pill">Open Source</p>
+                <span>Layer 12</span>
+              </div>
+              <h3>AegisAI Guard Safety Pipeline</h3>
+              <p>
+                GSSoC&apos;26 contribution work around a standardized ML training pipeline for Guard Safety
+                Prediction in an AI governance and safety repository.
+              </p>
+              <ul>
+                <li>Submitted PR #338 for production-oriented ML training structure</li>
+                <li>AI-GRC, LLM guard, and safety prediction context</li>
+                <li>Focused on cleaner training workflow organization</li>
+              </ul>
+              <a href="https://github.com/MaheshReddy-ML/AegisAI" target="_blank" rel="noreferrer"
+                >View Repository</a
+              >
+            </article>
+
+            <article
+              id="opensource-disease"
+              class="project-layer-card tilt reveal"
+              data-category="opensource predictive"
+              data-reveal="up"
+              data-delay="720"
+            >
+              <div class="layer-header">
+                <p class="pill">Merged PR</p>
+                <span>Layer 13</span>
+              </div>
+              <h3>Disease Prediction Preprocessing</h3>
+              <p>
+                GSSoC&apos;26 merged PR contribution adding a standardized preprocessing module for a
+                disease prediction project.
+              </p>
+              <ul>
+                <li>Merged PR #246 under Issue #243</li>
+                <li>Backend preprocessing module contribution</li>
+                <li>Reviewer feedback loop and successful merge</li>
+              </ul>
+              <a href="https://github.com/MaheshReddy-ML/Disease-prediction" target="_blank" rel="noreferrer"
+                >View Repository</a
+              >
+            </article>
+
+            <article class="project-layer-card tilt reveal" data-category="predictive" data-reveal="up" data-delay="780">
               <div class="layer-header">
                 <p class="pill">Learning Workflow</p>
-                <span>Layer 07</span>
+                <span>Layer 14</span>
               </div>
               <h3>Technical Blogging Engine</h3>
               <p>

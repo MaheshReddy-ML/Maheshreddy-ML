@@ -489,6 +489,70 @@ body.menu-open .menu-toggle span:nth-child(3) {
   color: var(--ink-soft);
 }
 
+.achievement-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(14, 33, 56, 0.12);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.68), rgba(224, 247, 250, 0.48));
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(7px);
+}
+
+.achievement-strip article {
+  position: relative;
+  overflow: hidden;
+  min-height: 160px;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(14, 33, 56, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.achievement-strip article::before {
+  content: "";
+  position: absolute;
+  inset: -40% auto auto -40%;
+  width: 130px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(15, 155, 142, 0.22), rgba(15, 155, 142, 0));
+  animation: pulseGlow 5.5s ease-in-out infinite;
+}
+
+.achievement-strip span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 9px;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  background: rgba(225, 125, 42, 0.13);
+  border: 1px solid rgba(225, 125, 42, 0.22);
+  color: #9a4f14;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.achievement-strip h3 {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 8px;
+  font-size: 1.16rem;
+}
+
+.achievement-strip p {
+  position: relative;
+  z-index: 1;
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+}
+
 .section-head {
   margin-bottom: 24px;
   max-width: 720px;
@@ -1056,6 +1120,18 @@ body.menu-open .menu-toggle span:nth-child(3) {
   }
 }
 
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.45;
+  }
+}
+
 @media (max-width: 1080px) {
   .hero-grid,
   .grid-two,
@@ -1071,7 +1147,8 @@ body.menu-open .menu-toggle span:nth-child(3) {
 
   .project-grid,
   .expertise-grid,
-  .research-grid {
+  .research-grid,
+  .achievement-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1146,6 +1223,7 @@ body.menu-open .menu-toggle span:nth-child(3) {
   .project-grid,
   .expertise-grid,
   .research-grid,
+  .achievement-strip,
   .project-layer-grid,
   .deep-dive-grid {
     grid-template-columns: 1fr;
@@ -1243,7 +1321,8 @@ body.menu-open .menu-toggle span:nth-child(3) {
   .research-grid,
   .project-layer-grid,
   .deep-dive-grid,
-  .stats-grid {
+  .stats-grid,
+  .achievement-strip {
     grid-template-columns: 1fr;
   }
 

@@ -28,6 +28,10 @@
 <img src="https://img.shields.io/badge/GSSoC%202026-Selected%20Contributor-f97316?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="GSSoC 2026" />
 <img src="https://img.shields.io/badge/Published-AI%20Researcher-7c3aed?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Published researcher" />
 
+<br /><br />
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=16&duration=1800&pause=450&color=F97316&center=true&vCenter=true&width=980&lines=Open-source+selected+contributor+at+GSSoC'26;Merged+PRs+%2B+production-style+ML+pipelines;Published+research+%2B+from-scratch+machine+learning;14+public+repositories+and+counting" alt="Fast status animation" />
+
 </div>
 
 <br />
@@ -37,6 +41,42 @@
 <img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:06b6d4,50:7c3aed,100:f97316" width="100%" alt="Divider" />
 
 </div>
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=transparent&height=82&section=header&text=Animated%20Signal%20Layer&fontSize=36&fontColor=22c55e&animation=fadeIn" alt="Animated Signal Layer" />
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="260" alt="Coding animation" />
+      <br />
+      <b>Build Mode</b>
+      <br />
+      <sub>Turning ideas into working ML systems</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="https://media.giphy.com/media/3oKIPEqDGUULpEU0aQ/giphy.gif" width="260" alt="Analytics animation" />
+      <br />
+      <b>Research Mode</b>
+      <br />
+      <sub>Testing, measuring, documenting, improving</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="https://media.giphy.com/media/L8K62iTDkzGX6/giphy.gif" width="260" alt="AI animation" />
+      <br />
+      <b>Open Source Mode</b>
+      <br />
+      <sub>Shipping public work and learning in the open</sub>
+    </td>
+  </tr>
+</table>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=800&size=20&duration=2200&pause=700&color=A78BFA&center=true&vCenter=true&width=1000&lines=Data+%E2%86%92+Features+%E2%86%92+Models+%E2%86%92+APIs+%E2%86%92+Products;Scratch+ML+%E2%86%92+Deep+Learning+%E2%86%92+NLP+%E2%86%92+Research;Build+publicly.+Learn+deeply.+Improve+every+iteration." alt="Workflow typing animation" />
+
+</div>
+
+---
 
 ## Mission Control
 
