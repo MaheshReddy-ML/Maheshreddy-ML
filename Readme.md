@@ -98,7 +98,7 @@
       </p>
     </td>
     <td width="42%" align="center">
-      <img src="https://github-readme-stats.vercel.app/api?username=MaheshReddy-ML&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github&include_all_commits=true&count_private=true&custom_title=Mahesh%27s%20GitHub%20Dashboard" width="100%" alt="GitHub dashboard" />
+      <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=MaheshReddy-ML&theme=tokyonight" width="100%" alt="GitHub dashboard" />
     </td>
   </tr>
 </table>
@@ -208,11 +208,6 @@
 
 <img src="https://capsule-render.vercel.app/api?type=transparent&height=70&section=header&text=GitHub%20Command%20Center&fontSize=34&fontColor=38bdf8&animation=fadeIn" alt="GitHub Command Center" />
 
-<img width="49%" src="https://github-readme-streak-stats.herokuapp.com?user=MaheshReddy-ML&theme=tokyonight&hide_border=true&date_format=j%20M%5B%20Y%5D&card_width=490" alt="GitHub streak" />
-<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=MaheshReddy-ML&layout=compact&theme=tokyonight&hide_border=true&langs_count=12&card_width=490" alt="Top languages" />
-
-<br />
-
 <img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MaheshReddy-ML&theme=tokyonight" alt="Repos per language" />
 <img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=MaheshReddy-ML&theme=tokyonight" alt="Most commit language" />
 
@@ -226,6 +221,31 @@
 <img width="98%" src="https://github-readme-activity-graph.vercel.app/graph?username=MaheshReddy-ML&theme=tokyo-night&hide_border=true&area=true&radius=10&custom_title=Contribution%20Graph" alt="Contribution graph" />
 
 </div>
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <b>Primary Language</b>
+      <br />
+      <img src="https://img.shields.io/badge/Python-ML%20%2B%20AI-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python badge" />
+    </td>
+    <td align="center" width="25%">
+      <b>Frontend Work</b>
+      <br />
+      <img src="https://img.shields.io/badge/HTML%20%2B%20CSS%20%2B%20JS-Portfolio-F59E0B?style=for-the-badge&logo=javascript&logoColor=black" alt="Frontend badge" />
+    </td>
+    <td align="center" width="25%">
+      <b>Core Track</b>
+      <br />
+      <img src="https://img.shields.io/badge/Deep%20Learning-NLP%20%2B%20CV-7C3AED?style=for-the-badge&logo=tensorflow&logoColor=white" alt="Deep learning badge" />
+    </td>
+    <td align="center" width="25%">
+      <b>Open Source</b>
+      <br />
+      <img src="https://img.shields.io/badge/GSSoC%2726-Selected%20Contributor-F97316?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="GSSoC badge" />
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -338,26 +358,18 @@
 
 <div align="center">
 
-<a href="https://github.com/MaheshReddy-ML/myMLlib">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=MaheshReddy-ML&repo=myMLlib&theme=tokyonight&hide_border=true" alt="myMLlib repo card" />
-</a>
-<a href="https://github.com/MaheshReddy-ML/EmailFilterAI">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=MaheshReddy-ML&repo=EmailFilterAI&theme=tokyonight&hide_border=true" alt="EmailFilterAI repo card" />
-</a>
-<a href="https://github.com/MaheshReddy-ML/customer-intelligence-system">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=MaheshReddy-ML&repo=customer-intelligence-system&theme=tokyonight&hide_border=true" alt="Customer Intelligence System repo card" />
-</a>
-<a href="https://github.com/MaheshReddy-ML/Student-Performance-Risk-Portal">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=MaheshReddy-ML&repo=Student-Performance-Risk-Portal&theme=tokyonight&hide_border=true" alt="Student Performance Risk Portal repo card" />
-</a>
-<a href="https://github.com/MaheshReddy-ML/Sign_language_detecttion">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=MaheshReddy-ML&repo=Sign_language_detecttion&theme=tokyonight&hide_border=true" alt="Sign Language Detection repo card" />
-</a>
-<a href="https://github.com/MaheshReddy-ML/lstm-chatbot-word2vec">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=MaheshReddy-ML&repo=lstm-chatbot-word2vec&theme=tokyonight&hide_border=true" alt="LSTM Chatbot repo card" />
-</a>
+<img src="https://capsule-render.vercel.app/api?type=transparent&height=58&section=header&text=Stable%20Repository%20Launchpad&fontSize=28&fontColor=38bdf8&animation=fadeIn" alt="Stable Repository Launchpad" />
 
 </div>
+
+| Project | Focus | Repository |
+| --- | --- | --- |
+| **myMLlib** | Custom ML library from scratch | [Open Repo](https://github.com/MaheshReddy-ML/myMLlib) |
+| **EmailFilterAI** | Neural spam classifier with TF-IDF | [Open Repo](https://github.com/MaheshReddy-ML/EmailFilterAI) |
+| **Customer Intelligence System** | Segmentation, embeddings, recommendations | [Open Repo](https://github.com/MaheshReddy-ML/customer-intelligence-system) |
+| **Student Performance Risk Portal** | ML web app with REST API | [Open Repo](https://github.com/MaheshReddy-ML/Student-Performance-Risk-Portal) |
+| **Sign Language Detection** | Real-time gesture recognition | [Open Repo](https://github.com/MaheshReddy-ML/Sign_language_detecttion) |
+| **LSTM Chatbot with Word2Vec** | Conversational AI with sequence modeling | [Open Repo](https://github.com/MaheshReddy-ML/lstm-chatbot-word2vec) |
 
 ---
 
