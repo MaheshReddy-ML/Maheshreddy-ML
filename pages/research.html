@@ -3,202 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Research Notes | Mahesh Reddy</title>
-    <meta
-      name="description"
-      content="Research archive by Mahesh Reddy covering AI Companion theoretical frameworks and scratch-built breast cancer detection analysis."
-    />
+    <title>Research | Mahesh Reddy</title>
+    <meta name="description" content="Research archive for Mahesh Reddy." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body data-page="research">
-    <div class="site-bg">
-      <canvas id="particleCanvas" aria-hidden="true"></canvas>
-      <span class="orb orb-a"></span>
-      <span class="orb orb-b"></span>
-      <span class="orb orb-c"></span>
-    </div>
-
-    <header class="site-header" id="top">
-      <div class="container nav-shell">
-        <a href="../index.html" class="brand">
-          <span class="brand-mark">MR</span>
-          <span class="brand-text">Mahesh Reddy</span>
-        </a>
-        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-        <nav class="site-nav">
-          <a href="../index.html#about">About</a>
-          <a href="expertise.html">Expertise</a>
-          <a href="projects.html">Projects</a>
-          <a href="research.html" aria-current="page">Research</a>
-          <a href="contact.html" class="nav-cta magnetic">Collaborate</a>
-        </nav>
-      </div>
+  <body>
+    <div class="map-weathering" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="../index.html"><span>MR</span><strong>Parchment Map</strong></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="projects.html">Projects</a>
+        <a href="expertise.html">Expertise</a>
+        <a href="research.html" aria-current="page">Research</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </header>
-
     <main>
-      <section class="section-shell page-hero">
-        <div class="container page-hero-shell reveal" data-reveal="up">
-          <p class="eyebrow">Research Archive</p>
-          <h1>From first principles to publishable AI engineering insights</h1>
-          <p>
-            My research spans conceptual LLM systems and mathematical ML implementations with clear,
-            inspectable methodology.
-          </p>
+      <section class="page-hero map-sheet reveal">
+        <p class="signal">Research shelf · papers and proof</p>
+        <h1>Papers, contribution evidence, and research method.</h1>
+        <p>Research lives beside implementation because the useful question is always: what was built, measured, and explained?</p>
+      </section>
+      <section class="section">
+        <div class="research-list wide">
+          <article class="research-card reveal"><p>Paper 2026</p><h3>AI Companion: Theoretical Frameworks</h3><small>Emotionally aware LLM systems, architecture requirements, and empathetic digital-companion design.</small><a href="../assets/docs/AI_Companion_Research_paper.pdf" target="_blank" rel="noreferrer">Open PDF</a></article>
+          <article class="research-card reveal"><p>Paper 2025</p><h3>Breast Cancer Detection Analysis</h3><small>Scratch logistic regression study using NumPy, convergence checks, and diagnostic performance analysis.</small><a href="../assets/docs/logisticregression_for_breastCancer.pdf" target="_blank" rel="noreferrer">Open PDF</a></article>
+          <article class="research-card reveal"><p>Open Source 2026</p><h3>GSSoC'26 Contribution Evidence</h3><small>Selected contributor with merged preprocessing work in Disease-prediction and ML pipeline work for AegisAI Guard Safety Prediction.</small><a href="https://github.com/MaheshReddy-ML" target="_blank" rel="noreferrer">GitHub Profile</a></article>
         </div>
       </section>
-
-      <section class="section-shell">
-        <div class="container research-grid">
-          <article class="research-card reveal" data-reveal="up">
-            <p class="pill">Paper 2026</p>
-            <h3>AI Companion: Theoretical Frameworks</h3>
-            <p>
-              A research study on the intersection of emotional intelligence and large language models,
-              exploring architecture requirements for empathetic digital companions.
-            </p>
-            <small>Status: Archived</small>
-            <a
-              href="../assets/docs/AI_Companion_Research_paper.pdf"
-              target="_blank"
-              rel="noreferrer"
-              class="inline-doc-link"
-              >View Full Paper</a
-            >
-          </article>
-
-          <article class="research-card reveal" data-reveal="up" data-delay="80">
-            <p class="pill">Paper 2025</p>
-            <h3>Breast Cancer Detection Analysis</h3>
-            <p>
-              Logistic Regression built from scratch with NumPy to evaluate diagnostic accuracy and
-              convergence behavior without high-level ML frameworks.
-            </p>
-            <small>Status: 92% Observed Accuracy</small>
-            <a
-              href="../assets/docs/logisticregression_for_breastCancer.pdf"
-              target="_blank"
-              rel="noreferrer"
-              class="inline-doc-link"
-              >Check Paper</a
-            >
-          </article>
-
-          <article class="research-card reveal" data-reveal="up" data-delay="160">
-            <p class="pill">Open Source 2026</p>
-            <h3>GSSoC&apos;26 Contribution Evidence</h3>
-            <p>
-              Selected contributor with merged preprocessing work in Disease-prediction and submitted ML
-              training pipeline work for AegisAI Guard Safety Prediction.
-            </p>
-            <small>Status: Selected Contributor + Merged PR</small>
-            <a href="https://github.com/MaheshReddy-ML" target="_blank" rel="noreferrer" class="inline-doc-link"
-              >Open GitHub Profile</a
-            >
-          </article>
-        </div>
-      </section>
-
-      <section class="section-shell">
-        <div class="container">
-          <div class="deep-dive reveal" data-reveal="up">
-            <p class="eyebrow">Research Framework</p>
-            <h2>How every research artifact is built</h2>
-            <div class="deep-dive-grid">
-              <article>
-                <h3>Scope</h3>
-                <p>Define the exact objective, assumptions, and limitations before model design starts.</p>
-              </article>
-              <article>
-                <h3>Implementation</h3>
-                <p>Build core logic with transparent steps to keep behavior interpretable and auditable.</p>
-              </article>
-              <article>
-                <h3>Validation</h3>
-                <p>Evaluate with dataset metrics, convergence checks, and reproducibility-focused testing.</p>
-              </article>
-              <article>
-                <h3>Publication</h3>
-                <p>Convert insights into papers, repository artifacts, and technical writeups.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell">
-        <div class="container">
-          <div class="section-head reveal" data-reveal="up">
-            <p class="eyebrow">Research Timeline</p>
-            <h2>Recent research and academic milestones</h2>
-          </div>
-
-          <div class="notebook-timeline">
-            <article class="notebook-entry reveal" data-reveal="left">
-              <span>2026</span>
-              <div>
-                <h3>AI Companion framework archived</h3>
-                <p>
-                  Consolidated theoretical insights around empathetic LLM agents and architectural constraints.
-                </p>
-              </div>
-            </article>
-            <article class="notebook-entry reveal" data-reveal="left" data-delay="90">
-              <span>2025</span>
-              <div>
-                <h3>Scratch-built Logistic Regression study</h3>
-                <p>
-                  Completed breast cancer dataset analysis and documented full implementation path and metrics.
-                </p>
-              </div>
-            </article>
-            <article class="notebook-entry reveal" data-reveal="left" data-delay="180">
-              <span>2026</span>
-              <div>
-                <h3>GSSoC&apos;26 selected contributor</h3>
-                <p>
-                  Merged PR #246 for Disease-prediction preprocessing and submitted PR #338 for AegisAI Guard
-                  Safety Prediction training pipeline work.
-                </p>
-              </div>
-            </article>
-            <article class="notebook-entry reveal" data-reveal="left" data-delay="240">
-              <span>2024-Present</span>
-              <div>
-                <h3>Technical Blogging: Through My Eyes AI/ML</h3>
-                <p>Publishing implementation notes, model breakdowns, and learnings from active projects.</p>
-              </div>
-            </article>
-            <article class="notebook-entry reveal" data-reveal="left" data-delay="300">
-              <span>2023-2027</span>
-              <div>
-                <h3>B.Tech CS (AI), Parul University</h3>
-                <p>Academic base in deep learning, computational mathematics, and AI systems engineering.</p>
-              </div>
-            </article>
-          </div>
+      <section class="section">
+        <div class="timeline">
+          <article class="reveal"><span>01</span><h3>Scope</h3><p>Define the objective, assumptions, and limitations before model design starts.</p></article>
+          <article class="reveal"><span>02</span><h3>Implementation</h3><p>Build core logic with transparent steps to keep behavior interpretable.</p></article>
+          <article class="reveal"><span>03</span><h3>Validation</h3><p>Evaluate with metrics, convergence checks, and reproducibility-focused tests.</p></article>
+          <article class="reveal"><span>04</span><h3>Publication</h3><p>Convert insights into papers, repositories, and technical writeups.</p></article>
         </div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <div class="container footer-shell">
-        <p>&copy; <span id="year"></span> Mahesh Reddy. Research-led engineering.</p>
-        <div>
-          <a href="expertise.html">Expertise</a>
-          <a href="projects.html">Projects</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-    </footer>
-
-    <script src="../assets/js/main.js"></script>
+    <footer class="site-footer"><p>Mahesh Reddy · Research Map</p><a href="../index.html">Home</a></footer>
+    <script src="../script.js"></script>
   </body>
 </html>

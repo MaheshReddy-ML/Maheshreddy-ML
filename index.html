@@ -3,326 +3,176 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mahesh Reddy | AI Engineer</title>
+    <title>Mahesh Reddy | Parchment Portfolio Map</title>
     <meta
       name="description"
-      content="Mahesh Reddy AI/ML portfolio featuring scratch-built machine learning systems, applied research papers, and production-ready engineering projects."
+      content="Mahesh Reddy AI/ML portfolio redesigned as an old parchment map with overview routes to projects, research, expertise, and contact pages."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body data-page="home">
-    <div class="site-bg">
-      <canvas id="particleCanvas" aria-hidden="true"></canvas>
-      <span class="orb orb-a"></span>
-      <span class="orb orb-b"></span>
-      <span class="orb orb-c"></span>
+  <body class="intro-active">
+    <div class="intro-gate" aria-label="Opening animation" tabindex="0">
+      <video
+        class="intro-video"
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source
+          src="https://preview.redd.it/t1lz3zxlu4y01.gif?width=1280&amp;format=mp4&amp;s=95fe1e6ed7be3c94fe2f57c1beccef6855980b04"
+          type="video/mp4"
+        />
+      </video>
     </div>
-
-    <header class="site-header" id="top">
-      <div class="container nav-shell">
-        <a href="index.html" class="brand">
-          <span class="brand-mark">MR</span>
-          <span class="brand-text">Mahesh Reddy</span>
-        </a>
-        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-        <nav class="site-nav">
-          <a href="#about">About</a>
-          <a href="pages/expertise.html">Expertise</a>
-          <a href="pages/projects.html">Projects</a>
-          <a href="pages/research.html">Research</a>
-          <a href="pages/contact.html" class="nav-cta magnetic">Collaborate</a>
-        </nav>
-      </div>
+    <div class="map-weathering" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Mahesh Reddy home">
+        <span>MR</span>
+        <strong>Parchment Map</strong>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="pages/projects.html">Projects</a>
+        <a href="pages/expertise.html">Expertise</a>
+        <a href="pages/research.html">Research</a>
+        <a href="pages/contact.html">Contact</a>
+      </nav>
     </header>
 
     <main>
-      <section class="hero section-shell">
-        <div class="container hero-grid">
-          <div class="hero-copy reveal" data-reveal="up">
-            <p class="eyebrow">AI Engineer | ML Builder | GSSoC&apos;26 Contributor</p>
-            <h1>
-              I build AI systems from first principles
-              <span>and ship them as real products</span>
-            </h1>
-            <p class="hero-lead">
-              Pursuing deep understanding through scratch-built ML, applied deep learning, open-source
-              contributions, and production-style AI projects across NLP, computer vision, analytics,
-              and model deployment.
-            </p>
-            <div class="hero-actions">
-              <a href="pages/research.html" class="btn btn-primary magnetic">Research Archive</a>
-              <a href="pages/contact.html" class="btn btn-secondary">Start Collaboration</a>
-            </div>
-            <ul class="hero-tags">
-              <li>myMLlib</li>
-              <li>TensorFlow</li>
-              <li>GSSoC&apos;26</li>
-              <li>Deep Learning</li>
-              <li>Open Source</li>
-            </ul>
-            <div class="inline-links">
-              <a href="https://github.com/MaheshReddy-ML" target="_blank" rel="noreferrer">GitHub</a>
-              <a href="https://www.linkedin.com/in/maheshreddy04" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="mailto:maheshreddygit@gmail.com">Email</a>
-              <a href="tel:+919177319640">Phone</a>
-            </div>
-          </div>
-
-          <div class="hero-stack reveal" data-reveal="right">
-            <article class="layer-card layer-main" data-parallax="0.2">
-              <p class="card-label">Live Artifact</p>
-              <h3>Customer Intelligence System</h3>
-              <div class="metric-row">
-                <span>
-                  <strong class="stat-value" data-target="14">0</strong>
-                  <small>Public Repos</small>
-                </span>
-                <span>
-                  <strong class="stat-value" data-target="2">0</strong>
-                  <small>Research Papers</small>
-                </span>
-              </div>
-              <p>Segmentation, neural embeddings, clustering analysis, and recommendation intelligence.</p>
-            </article>
-
-            <article class="layer-card layer-mid" data-parallax="0.35">
-              <p class="card-label">Open Source</p>
-              <h3>GSSoC&apos;26 Contributor</h3>
-              <p>
-                Selected contributor with merged PR work, production-minded preprocessing, and ML pipeline
-                contributions.
-              </p>
-            </article>
-
-            <article class="layer-card layer-back" data-parallax="0.5">
-              <p class="card-label">Identity Layer</p>
-              <h3>Mahesh Reddy</h3>
-              <p>B.Tech CS (AI), Parul University (2023-2027)</p>
-              <img src="assets/media/linked_profile.jpg" alt="Mahesh Reddy" class="mini-profile" />
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell" id="about">
-        <div class="container grid-two">
-          <div class="panel reveal" data-reveal="up">
-            <p class="eyebrow">About Me</p>
-            <h2>Research-led engineering with implementation depth</h2>
-            <p>
-              I focus on understanding the mathematical core of models and then productizing them with clean,
-              reproducible systems. Current academic track: B.Tech Computer Science (AI) at Parul University,
-              Vadodara.
-            </p>
-          </div>
-
-          <div class="stats-grid reveal" data-reveal="up" data-delay="120">
-            <div class="stat-card">
-              <p>Email Spam Accuracy</p>
-              <strong>99%</strong>
-            </div>
-            <div class="stat-card">
-              <p>Public GitHub Repositories</p>
-              <strong class="stat-value" data-target="14">0</strong>
-            </div>
-            <div class="stat-card">
-              <p>Published Research Papers</p>
-              <strong class="stat-value" data-target="2">0</strong>
-            </div>
-            <div class="stat-card">
-              <p>GSSoC Year</p>
-              <strong>2026</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell">
-        <div class="container achievement-strip reveal" data-reveal="up">
-          <article>
-            <span>GSSoC&apos;26</span>
-            <h3>Selected Contributor</h3>
-            <p>Open-source contributor in GirlScript Summer of Code 2026.</p>
-          </article>
-          <article>
-            <span>PR #246</span>
-            <h3>Merged Contribution</h3>
-            <p>Standardized preprocessing module for Disease-prediction.</p>
-          </article>
-          <article>
-            <span>PR #338</span>
-            <h3>ML Pipeline Work</h3>
-            <p>Guard Safety Prediction pipeline submitted for AegisAI.</p>
-          </article>
-          <article>
-            <span>Pull Shark</span>
-            <h3>GitHub Achievement</h3>
-            <p>Earned through merged pull request activity.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-shell" id="expertise">
-        <div class="container">
-          <div class="section-head reveal" data-reveal="up">
-            <p class="eyebrow">Core Skills</p>
-            <h2>Core capabilities I use to build ML systems</h2>
-          </div>
-
-          <div class="expertise-grid">
-            <article class="feature-card reveal" data-reveal="up">
-              <h3>Programming Foundation</h3>
-              <p>Strong fundamentals for writing optimized, maintainable ML code and utilities.</p>
-              <ul>
-                <li>Python, C, OOP</li>
-                <li>Data Structures, DBMS</li>
-                <li>Versioned engineering workflow</li>
-              </ul>
-            </article>
-            <article class="feature-card reveal" data-reveal="up" data-delay="100">
-              <h3>AI &amp; Machine Learning</h3>
-              <p>Hands-on model development with both frameworks and scratch-built implementations.</p>
-              <ul>
-                <li>TensorFlow, Neural Networks</li>
-                <li>Deep Learning + NLP</li>
-                <li>Custom algorithm implementation</li>
-              </ul>
-            </article>
-            <article class="feature-card reveal" data-reveal="up" data-delay="200">
-              <h3>Research + Delivery</h3>
-              <p>Academic research translated into practical artifacts and technical communication.</p>
-              <ul>
-                <li>Technical blogging</li>
-                <li>Experiment writeups</li>
-                <li>Project-first learning approach</li>
-              </ul>
-            </article>
-          </div>
-          <div class="hero-actions reveal" data-reveal="up" data-delay="120">
-            <a href="pages/expertise.html" class="btn btn-secondary">View Full Expertise Page</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell" id="journey">
-        <div class="container">
-          <div class="section-head reveal" data-reveal="up">
-            <p class="eyebrow">Journey Timeline</p>
-            <h2>Academic, research, and professional milestones</h2>
-          </div>
-
-          <div class="timeline">
-            <article class="timeline-item reveal" data-reveal="left">
-              <span>01</span>
-              <div>
-                <h3>B.Tech CS (AI), Parul University</h3>
-                <p>Started in 2023 and focused on deep learning, computational mathematics, and neural architectures.</p>
-              </div>
-            </article>
-            <article class="timeline-item reveal" data-reveal="left" data-delay="80">
-              <span>02</span>
-              <div>
-                <h3>Independent AI Project Development</h3>
-                <p>
-                  Built and published production-style ML projects including myMLlib, spam classification,
-                  medical inference, and rent prediction systems.
-                </p>
-              </div>
-            </article>
-            <article class="timeline-item reveal" data-reveal="left" data-delay="140">
-              <span>03</span>
-              <div>
-                <h3>Technical Blogger - Through My Eyes AI/ML</h3>
-                <p>Ongoing work documenting personal projects and hands-on AI/ML experiments.</p>
-              </div>
-            </article>
-            <article class="timeline-item reveal" data-reveal="left" data-delay="200">
-              <span>04</span>
-              <div>
-                <h3>Research Papers and Open Source</h3>
-                <p>AI Companion Theoretical Frameworks (2026) and Breast Cancer Detection Analysis (2025).</p>
-              </div>
-            </article>
-            <article class="timeline-item reveal" data-reveal="left" data-delay="260">
-              <span>05</span>
-              <div>
-                <h3>GSSoC&apos;26 Selected Contributor</h3>
-                <p>Merged preprocessing work and contributed ML pipeline design to production open-source repositories.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell" id="projects">
-        <div class="container">
-          <div class="section-head reveal" data-reveal="up">
-            <p class="eyebrow">Engineering Artifacts</p>
-            <h2>Selected builds from my active portfolio</h2>
-          </div>
-
-          <div class="project-grid">
-            <article class="project-card tilt reveal" data-reveal="up">
-              <p class="pill">Customer AI</p>
-              <h3>Customer Intelligence System</h3>
-              <p>Retail segmentation, neural embeddings, clustering visuals, and recommendation intelligence.</p>
-              <a href="pages/projects.html#customer-intelligence">Open project layer</a>
-            </article>
-            <article class="project-card tilt reveal" data-reveal="up" data-delay="90">
-              <p class="pill">ML Web App</p>
-              <h3>Student Performance Risk Portal</h3>
-              <p>Risk prediction API and dashboard with confidence scores and actionable recommendations.</p>
-              <a href="pages/projects.html#student-risk">Open project layer</a>
-            </article>
-            <article class="project-card tilt reveal" data-reveal="up" data-delay="180">
-              <p class="pill">Computer Vision</p>
-              <h3>Sign Language Detection</h3>
-              <p>CNN + SignFormer-style gesture recognition with real-time webcam inference.</p>
-              <a href="pages/projects.html#sign-language">Open project layer</a>
-            </article>
-            <article class="project-card tilt reveal" data-reveal="up" data-delay="270">
-              <p class="pill">Motorsport ML</p>
-              <h3>F1 Pit Prediction</h3>
-              <p>CatBoost pipeline with race-aware features, GroupKFold validation, and threshold tuning.</p>
-              <a href="pages/projects.html#f1-pit">Open project layer</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell final-cta">
-        <div class="container cta-panel reveal" data-reveal="up">
-          <p class="eyebrow">Get in Touch</p>
-          <h2>Open to research, internships, and AI engineering collaborations</h2>
-          <p>
-            If you are building serious AI products or exploring research-backed implementations, I&apos;d love
-            to connect and contribute.
+      <section class="hero map-sheet">
+        <div class="hero-copy reveal">
+          <p class="signal">Map mark I · AI/ML engineer · GSSoC 2026 selected contributor</p>
+          <h1>Mahesh Reddy charts machine learning systems from rough idea to working artifact.</h1>
+          <p class="hero-text">
+            B.Tech CSE - Artificial Intelligence student at Parul University, expected May 2027. I build
+            scratch ML, deep learning, NLP, computer vision, research artifacts, and production-style AI
+            applications with visible proof of the route taken.
           </p>
-          <a href="pages/contact.html" class="btn btn-primary magnetic">Contact Me</a>
+          <div class="hero-actions" aria-label="Primary links">
+            <a class="button primary" href="pages/projects.html">Open the Project Map</a>
+            <a class="button secondary" href="pages/contact.html">Send a Message</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" data-delay="120">
+          <div class="portrait-plate">
+            <div class="window-bar">
+              <span></span><span></span><span></span>
+              <strong>Explorer's Folio</strong>
+            </div>
+            <img src="assets/media/mahesh-profile.jpg" alt="Mahesh Reddy" />
+          </div>
+          <div class="telemetry-board" aria-label="Portfolio highlights">
+            <div>
+              <span class="metric" data-count="14">0</span>
+              <small>public repositories</small>
+            </div>
+            <div>
+              <span class="metric" data-count="2">0</span>
+              <small>research papers</small>
+            </div>
+            <div>
+              <span>GSSoC'26</span>
+              <small>selected contributor</small>
+            </div>
+            <div>
+              <span>Customer AI</span>
+              <small>latest intelligence build</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="marquee" aria-label="Focus areas">
+        <div>
+          <span>Scratch ML</span>
+          <span>Customer Intelligence</span>
+          <span>TensorFlow</span>
+          <span>NLP</span>
+          <span>Computer Vision</span>
+          <span>Open Source</span>
+          <span>Research Writing</span>
+          <span>REST APIs</span>
+          <span>Model Dashboards</span>
+        </div>
+      </section>
+
+      <section class="section map-routes" id="overview">
+        <div class="section-kicker">Overview route marks</div>
+        <div class="section-head">
+          <h2>Only the map legend is shown here. The deeper records live on their own pages.</h2>
+          <p>
+            This front page is a quick orientation layer, so visitors can choose the route they want instead
+            of reading every detail at once.
+          </p>
+        </div>
+
+        <div class="overview-grid">
+          <article class="overview-card reveal">
+            <span class="index">I</span>
+            <p>Project Route</p>
+            <h3>Selected AI/ML builds</h3>
+            <small>Customer Intelligence, Student Risk Portal, Sign Language Detection, F1 Pit Prediction, myMLlib, and more.</small>
+            <a href="pages/projects.html">More</a>
+          </article>
+          <article class="overview-card reveal">
+            <span class="index">II</span>
+            <p>Expertise Route</p>
+            <h3>Technical strengths</h3>
+            <small>Machine learning foundations, scratch implementations, deep learning, NLP, delivery, and open-source workflow.</small>
+            <a href="pages/expertise.html">More</a>
+          </article>
+          <article class="overview-card reveal">
+            <span class="index">III</span>
+            <p>Research Route</p>
+            <h3>Papers and evidence</h3>
+            <small>AI Companion theoretical framework, breast cancer detection analysis, and GSSoC contribution evidence.</small>
+            <a href="pages/research.html">More</a>
+          </article>
+          <article class="overview-card reveal">
+            <span class="index">IV</span>
+            <p>Correspondence Route</p>
+            <h3>Collaborate or hire</h3>
+            <small>Remote internships, project collaboration, AI/ML engineering opportunities, and research conversations.</small>
+            <a href="pages/contact.html">More</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split">
+        <div class="reveal">
+          <div class="section-kicker">Latest marked route</div>
+          <h2>Customer Intelligence System sits at the newest edge of the map.</h2>
+          <p>
+            A customer segmentation and recommendation intelligence system using RFM features, clustering,
+            neural embeddings, PCA/t-SNE visuals, and business-readable outputs.
+          </p>
+          <a class="button secondary" href="pages/projects.html#customer-intelligence">More</a>
+        </div>
+        <div class="map-note reveal">
+          <p>GSSoC'26</p>
+          <h3>Selected open-source contributor</h3>
+          <small>
+            Includes merged preprocessing work for Disease-prediction and ML training pipeline contribution
+            work for AegisAI Guard Safety Prediction.
+          </small>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-shell">
-        <p>&copy; <span id="year"></span> Mahesh Reddy. Research-led engineering.</p>
-        <div>
-          <a href="pages/expertise.html">Expertise</a>
-          <a href="pages/research.html">Research</a>
-          <a href="pages/projects.html">Projects</a>
-          <a href="pages/contact.html">Contact</a>
-        </div>
-      </div>
+      <p>Mahesh Reddy · Parchment Portfolio Map</p>
+      <a href="#">Back to top</a>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
