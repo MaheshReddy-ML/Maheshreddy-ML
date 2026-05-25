@@ -23,6 +23,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -37,6 +38,11 @@ body {
   color: var(--ink);
   font-family: var(--sans);
   overflow-x: hidden;
+}
+
+html,
+body {
+  max-width: 100%;
 }
 
 body.intro-active {
@@ -114,6 +120,7 @@ button {
   visibility: visible;
   transition: opacity 500ms ease, visibility 500ms ease;
   animation: introFadeOut 8000ms ease-out forwards;
+  will-change: opacity;
 }
 
 .intro-gate--hidden {
@@ -126,6 +133,7 @@ button {
   height: 100svh;
   object-fit: cover;
   background: #050302;
+  transform: translateZ(0);
 }
 
 .site-header {
@@ -1277,6 +1285,27 @@ body.turning-page {
 }
 
 @media (max-width: 980px) {
+  body {
+    background:
+      radial-gradient(ellipse at 18% 12%, rgba(255, 224, 133, 0.42), transparent 28rem),
+      radial-gradient(circle at 82% 18%, rgba(50, 20, 7, 0.28), transparent 18rem),
+      linear-gradient(180deg, var(--parchment-light) 0%, var(--parchment) 48%, #7a421f 100%);
+  }
+
+  body::before {
+    opacity: 0.65;
+  }
+
+  body::after {
+    background:
+      linear-gradient(90deg, rgba(28, 10, 3, 0.42), transparent 12%, transparent 88%, rgba(28, 10, 3, 0.42)),
+      linear-gradient(180deg, rgba(28, 10, 3, 0.45), transparent 14%, transparent 86%, rgba(28, 10, 3, 0.45));
+  }
+
+  .map-weathering {
+    opacity: 0.38;
+  }
+
   .site-header,
   .site-nav {
     align-items: flex-start;
@@ -1285,6 +1314,9 @@ body.turning-page {
   .site-header {
     flex-direction: column;
     gap: 14px;
+    min-height: auto;
+    background: rgba(185, 125, 59, 0.9);
+    backdrop-filter: none;
   }
 
   .site-nav {
@@ -1300,8 +1332,23 @@ body.turning-page {
     grid-template-columns: 1fr;
   }
 
+  .hero > *,
+  .section-head > *,
+  .split > *,
+  .contact-section > *,
+  .overview-card,
+  .project-card,
+  .research-card,
+  .stack-card,
+  .timeline-item,
+  .map-note,
+  .contact-panel {
+    min-width: 0;
+  }
+
   .hero {
     min-height: auto;
+    padding-top: 42px;
   }
 
   .hero-copy::after {
@@ -1317,6 +1364,52 @@ body.turning-page {
   .research-list.wide {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .map-sheet::before {
+    inset: 0;
+    filter: none;
+  }
+
+  .portrait-plate img {
+    filter: sepia(0.35) saturate(0.78) contrast(1.05);
+  }
+
+  .reveal {
+    filter: none;
+    transition: opacity 480ms ease, transform 480ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .reveal.visible {
+    filter: none;
+  }
+
+  .page-turn {
+    perspective: 1400px;
+  }
+
+  .page-turn-book {
+    filter: none;
+  }
+
+  .book-page,
+  .leaf-face {
+    padding: clamp(24px, 5vw, 48px);
+    box-shadow: inset 0 0 42px rgba(41, 16, 4, 0.55);
+  }
+
+  .book-page strong,
+  .leaf-face strong {
+    max-width: 92%;
+    font-size: clamp(34px, 9vw, 78px);
+    line-height: 0.95;
+  }
+
+  .book-page em,
+  .leaf-face em {
+    max-width: 88%;
+    font-size: clamp(24px, 6vw, 46px);
+    line-height: 1;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1328,11 +1421,54 @@ body.turning-page {
   }
 
   h1 {
-    font-size: clamp(44px, 15vw, 70px);
+    max-width: 100%;
+    font-size: clamp(30px, 8.4vw, 34px);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+    text-wrap: wrap;
   }
 
   h2 {
-    font-size: clamp(38px, 12vw, 56px);
+    max-width: 100%;
+    font-size: clamp(32px, 10.5vw, 48px);
+    line-height: 0.98;
+    overflow-wrap: anywhere;
+    text-wrap: wrap;
+  }
+
+  .site-header {
+    padding: 12px 14px;
+  }
+
+  .brand span {
+    width: 38px;
+    height: 38px;
+    font-size: 17px;
+  }
+
+  .site-nav {
+    gap: 16px;
+    font-size: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero {
+    gap: 26px;
+    padding: 34px 0 56px;
+  }
+
+  .hero-text,
+  .page-hero p,
+  .section-head p,
+  .split p {
+    font-size: 16px;
+    line-height: 1.62;
+    overflow-wrap: anywhere;
   }
 
   .hero-actions,
@@ -1343,6 +1479,38 @@ body.turning-page {
 
   .button {
     min-height: 52px;
+  }
+
+  .marquee {
+    transform: none;
+    max-width: 100%;
+    contain: paint;
+  }
+
+  .marquee div {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    animation: none;
+  }
+
+  .marquee span {
+    padding: 10px 12px;
+  }
+
+  .hero-visual,
+  .portrait-plate,
+  .portrait-plate img,
+  .telemetry-board {
+    max-width: 100%;
+  }
+
+  .portrait-plate {
+    transform: none;
+  }
+
+  .section {
+    padding: 56px 0;
   }
 
   .telemetry-board,
@@ -1358,9 +1526,87 @@ body.turning-page {
     grid-column: auto;
   }
 
+  .overview-card,
+  .project-card,
+  .research-card,
+  .stack-card,
+  .timeline-item,
+  .map-note,
+  .contact-panel {
+    transform: none;
+  }
+
+  .overview-card:hover,
+  .project-card:hover,
+  .button:hover {
+    transform: none;
+  }
+
+  .intro-video {
+    height: 100dvh;
+    object-position: center;
+  }
+
+  .page-turn {
+    perspective: none;
+  }
+
+  .page-turn::before {
+    background: rgba(36, 18, 8, 0.6);
+  }
+
+  .page-turn-book {
+    display: block;
+  }
+
+  .book-left {
+    display: none;
+  }
+
+  .turn-leaf,
+  .book-page,
+  .leaf-face {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .turn-leaf {
+    transform-origin: center center;
+  }
+
+  .leaf-back {
+    display: none;
+  }
+
+  .page-turn.active .turn-leaf {
+    animation: mobilePageTurn 760ms cubic-bezier(0.2, 0.78, 0.2, 1) forwards;
+  }
+
+  .page-turn.active .turn-leaf::after {
+    animation: none;
+  }
+
+  .page-turn.active .leaf-front .book-label,
+  .page-turn.active .leaf-front strong,
+  .page-turn.active .leaf-front em {
+    animation: none;
+  }
+
   .site-footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
+  }
+}
+
+@keyframes mobilePageTurn {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.985);
   }
 }

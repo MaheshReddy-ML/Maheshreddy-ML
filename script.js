@@ -7,7 +7,8 @@ const pageTurn = document.createElement("div");
 const introGate = document.querySelector(".intro-gate");
 const introVideo = document.querySelector(".intro-video");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const pageTurnDuration = 1180;
+const isCompactViewport = window.matchMedia("(max-width: 640px)").matches;
+const pageTurnDuration = isCompactViewport ? 760 : 1180;
 const introDuration = 8000;
 
 pageTurn.className = "page-turn";
