@@ -4,5 +4,8 @@ import type { ComponentProps } from "react"
 type Props = Omit<ComponentProps<typeof RouterLink>, "to"> & { href: string }
 
 export default function Link({ href, ...props }: Props) {
-  return <RouterLink to={href} viewTransition {...props} />
+  const viewTransition =
+    typeof document !== "undefined" &&
+    typeof document.startViewTransition === "function"
+  return <RouterLink to={href} viewTransition={viewTransition} {...props} />
 }

@@ -78,6 +78,15 @@ async function run() {
     await reduced.close()
 
     const fallback = await browser.newPage()
+    const transitionWarnings = []
+    fallback.on("console", (message) => {
+      if (
+        message.type() === "warning" &&
+        message.text().includes("viewTransition")
+      ) {
+        transitionWarnings.push(message.text())
+      }
+    })
     await fallback.addInitScript(() => {
       Object.defineProperty(document, "startViewTransition", {
         value: undefined,
@@ -93,6 +102,7 @@ async function run() {
       await fallback.getByRole("heading", { level: 1 }).isVisible(),
       true,
     )
+    assert.deepEqual(transitionWarnings, [])
     await fallback.close()
 
     console.log(
