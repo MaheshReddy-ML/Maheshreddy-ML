@@ -1,8 +1,10 @@
 {
-  "title": "Mahesh Reddy — ML Engineer",
-  "description": "Portfolio of Mahesh Reddy, a machine learning engineer.",
+  "title": "Mahesh Reddy — Machine Learning Engineer & AI Researcher",
+  "description": "Mahesh Reddy’s AI notebook: from-scratch transformers, local-first AI companions, governance, computer vision, and research.",
   "language": "en",
   "robots": {
     "index": true
-  }
+  },
+  "icons": { "icon": "/favicon.svg" },
+  "openGraph": { "image": "/social-preview.png" }
 }

@@ -1,0 +1,76 @@
+                                                                                    MAHESH REDDY
+                                                            Andhra Pradesh, India | +91 91773 19640 | maheshreddygit@gmail.com
+                                  linkedin.com/in/maheshreddy04 | github.com/MaheshReddy-ML | maheshreddyml.netlify.app | throughmyeyesaiml.blogspot.com
+
+PROFESSIONAL SUMMARY
+Machine Learning Engineer and AI Researcher (B.Tech, AI & Data Science, Class of 2027) with hands-on experience building and deploying ML systems across NLP, computer vision, and classification,
+achieving 92–99% model accuracy across projects. First-author published researcher on Emotionally Aware AI systems; GSSoC'26 open-source contributor with merged pull requests to production
+ML repositories. Proficient in Python, PyTorch, TensorFlow, and scikit-learn, with hands-on transformer and CNN architecture design experience.
+EDUCATION
+Bachelor of Technology (B.Tech) – Computer Science (Artificial Intelligence & Data Science)       Expected May 2027
+Parul University, Gujarat, India | Dept. of AI and Data Science
+Relevant Coursework: Machine Learning, Deep Learning, Artificial Neural Networks, Natural Language Processing (NLP), Computer Vision, Data Structures and Algorithms, OOP, DBMS
+EXPERIENCE
+GSSoC'26 Open Source Contributor May 2026 – Present
+GirlScript Foundation | Open Source Program
+  •   Shipped merged pull requests across 3+ production ML repositories, improving preprocessing modules, model training pipelines, and classification systems through code review and issue-
+      tracking workflows.
+  •   Earned GitHub Pull Shark recognition for sustained, high-quality open-source contribution.
+ACHIEVEMENTS
+  •   Nothing Playground Hackathon (Nothing) – Selected to the Top 50 nationally for an original creation submitted to Nothing's Playground Hackathon.
+  •   Vadodara Hackathon 6.0 – Placed in the Top 100 within Parul University's internal round.
+PROJECTS
+SentinelAI — Enterprise AI Governance Framework for Financial AI Systems               2026
+Python, Pydantic, Local MLX LLM, Rule-Based Expert Systems, CLI (Typer/Rich) | GitHub Repo
+  •   Engineered a governance CLI for financial AI systems that separates natural-language understanding from decision-making: a local on-device MLX model extracts a structured request, while
+      every approve, review, or block decision is made by deterministic, versioned JSON rules.
+  •  Designed six independent rule-driven expert domains (Policy, Fraud, Risk, Compliance, Spend, Audit) with full decision-rule traceability, plus chunked batch analysis for processing multiple
+     requests via CLI or natural-language prompt.
+MiniGPT-Emotional-Support V2          2026
+Python, PyTorch, Transformer Architecture, Byte Pair Encoding (BPE) Tokenizer, Natural Language Processing (NLP) | GitHub Repo
+  •   Implemented a GPT-style transformer from scratch (RMSNorm, SwiGLU, weight tying) to evaluate whether a small, locally trainable model could learn genuine empathetic response patterns.
+  •  Trained the model on 52,137 pairs across three emotional-support corpora using a custom 16k-vocabulary BPE tokenizer, improving internal evaluation scores from 4/10 (V1) to 7.5/10 (V2).
+Student Performance Risk Portal        2026
+Python, scikit-learn, Pandas, REST API | GitHub Repo | Live Demo
+  •   Deployed a scikit-learn classification pipeline behind a REST API to flag academic risk from habit and lifestyle data before grades slip, returning risk level, confidence scores, and actionable
+      recommendations.
+   • Shipped the API live on Render for real-time use by students or advisors.
+Sign Language Detection System       2026
+Python, TensorFlow, Keras, Convolutional Neural Network (CNN), Computer Vision | GitHub Repo
+  •   Engineered a baseline CNN and a transformer-based SignFormer model to translate hand gestures into letters in real time, lowering a communication barrier for hearing-impaired individuals.
+  •  Integrated a MediaPipe hand-landmark pipeline for live webcam inference.
+Customer Intelligence System           2026
+Python, TensorFlow, Keras, scikit-learn, Pandas, FastAPI | GitHub Repo
+  •   Engineered RFM behavioral features on UCI Online Retail data and evaluated K-Means clusters via silhouette scores to test whether combining classical clustering with a learned embedding
+      space improves customer segmentation.
+  •   Added a neural embedding layer exposed through a FastAPI backend for downstream use.
+RESEARCH AND PUBLICATIONS
+Emora — Local-First, Emotion-Aware AI Companion                  2026
+Research Project | Research Paper published on Zenodo
+  •   Implemented a browser-based AI companion with a local-first inference pipeline using quantized Qwen3-4B on Apple Silicon, FastAPI, MongoDB, Qwen2-VL, Qwen3-TTS/Kokoro, and a WebGL
+      VRM avatar.
+  •   Designed selective persistent memory, bounded conversational context, deterministic emotion estimation, personality profiles, and a constrained Companion Brain for avatar behavior.
+  •   Implemented privacy and safety controls including opt-in camera processing, user-controlled memory editing/export/deletion, bounded avatar actions, trusted-context separation, and non-
+      diagnostic interaction boundaries.
+  •   Verified the implementation with 170 automated tests: 169 passed and 1 skipped, alongside local runtime benchmarks for Qwen3-4B and TTS.
+  •   Research paper: Zenodo — DOI: 10.5281/zenodo.22267180
+Feature Scaling and Gradient Descent in Logistic Regression: A Breast Cancer Detection Case Study 2025
+Independent Researcher, Self-Published
+  •   Implemented the full gradient descent training pipeline from scratch in Python/NumPy and compared min-max normalization against standardization for convergence behavior on the Breast
+      Cancer Wisconsin dataset (Kaggle), achieving 92%+ accuracy.
+TECHNICAL SKILLS
+Programming: Python, C, SQL
+Machine Learning: scikit-learn, Feature Engineering, Hyperparameter Tuning, Model Evaluation, K-Means Clustering, Classification
+Deep Learning: PyTorch, TensorFlow, Keras, NumPy, Pandas, Transformer Architecture, CNN, RNN, LSTM, Neural Networks
+NLP & LLMs: Word2Vec, TF-IDF, BPE Tokenization, Text Classification, Sequence Modeling, Language Modeling, Generative Text Models
+Computer Vision: Image Classification, Real-Time Object Detection, Image Preprocessing, Feature Extraction
+Data Science: RFM Analysis, Behavioral Feature Engineering, Silhouette Score Evaluation, Data Preprocessing
+Deployment & APIs: FastAPI, REST API Development, Render
+Software Engineering: OOP, Data Structures and Algorithms, DBMS, Git, GitHub, Open-Source Development
+Tools: Jupyter Notebook, VS Code, Google Colab, Kaggle
+Research Areas: Multimodal AI, Emotion Recognition, Human-AI Interaction, Ethical AI Design, Curriculum Learning, Reinforcement Learning Concepts
+CERTIFICATIONS AND TECHNICAL WRITING
+CS50: Introduction to Programming with Python – Harvard University (edX) | 2025
+Portfolio: maheshreddyml.netlify.app
+AI/ML Technical Blog: throughmyeyesaiml.blogspot.com – in-depth articles on gradient descent, from-scratch ML, NLP architecture, and ethical AI design for software developer audiences.
+

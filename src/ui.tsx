@@ -1,7 +1,7 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 
 /* ── Scroll-into-view ─────────────────────────────────────── */
-export function useInView<T extends HTMLElement = HTMLDivElement>(threshold = 0.15) {
+export function useInView<T extends Element = HTMLDivElement>(threshold = 0.15) {
   const ref = useRef<T>(null)
   useEffect(() => {
     const el = ref.current
