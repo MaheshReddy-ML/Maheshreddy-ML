@@ -2286,22 +2286,48 @@ h3 {
   @view-transition {
     navigation: auto;
   }
+  #main {
+    view-transition-name: notebook-page;
+  }
   ::view-transition-old(root) {
-    animation: page-out 0.15s ease-out;
+    animation: none;
   }
   ::view-transition-new(root) {
-    animation: page-in 0.25s ease-out;
+    animation: none;
   }
-  @keyframes page-out {
+  ::view-transition-old(notebook-page) {
+    animation: notebook-page-out 180ms ease-in both;
+    transform-origin: top center;
+  }
+  ::view-transition-new(notebook-page) {
+    animation: notebook-page-in 430ms 100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    transform-origin: top center;
+  }
+  @keyframes notebook-page-out {
     to {
       opacity: 0;
+      transform: translateY(-12px) scale(0.992);
     }
   }
-  @keyframes page-in {
+  @keyframes notebook-page-in {
     from {
       opacity: 0;
-      transform: translateY(5px);
+      clip-path: inset(0 0 12% 0);
+      transform: translateY(22px) scale(0.992);
     }
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(notebook-page),
+  ::view-transition-new(notebook-page) {
+    animation: none !important;
   }
 }
 .flow-node:hover .flow-arrow {

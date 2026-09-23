@@ -14,7 +14,8 @@
     "test": "tsx --test tests/*.test.ts",
     "qa:pets": "node scripts/pet-qa.cjs",
     "qa:browser": "node scripts/browser-qa.cjs",
-    "qa:interactions": "node scripts/interaction-qa.cjs"
+    "qa:interactions": "node scripts/interaction-qa.cjs",
+    "qa:transitions": "node scripts/transition-qa.cjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
