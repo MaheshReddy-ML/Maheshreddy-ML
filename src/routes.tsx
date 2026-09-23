@@ -7,6 +7,11 @@ export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    HydrateFallback: () => (
+      <div className="page" role="status">
+        Opening notebook…
+      </div>
+    ),
     children: [
       { index: true, Component: Home },
       {
